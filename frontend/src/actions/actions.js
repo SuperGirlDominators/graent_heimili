@@ -109,7 +109,7 @@ function receiveChoices(choices) {
 export const getChoices = () => {
   return dispatch => {
     dispatch(requestChoices());
-    const url = "http://localhost:3001/api/choices";
+    const url = "http://localhost:3001/api/data";
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append('Accept','application/json');
@@ -159,11 +159,10 @@ function receiveUpsertChoices(choices) {
 export const postChoices = (choices) => {
   return dispatch => {
     dispatch(requestChoices());
-    const url = "http://localhost:3001/api/choices";
+    const url = "http://localhost:3001/api/data";
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append('Accept','application/json');
-    console.log(choices);
     fetch(url, {
       headers: headers,
       method: "POST",
@@ -200,7 +199,7 @@ const receiveChecklist = () =>{
 export const getChecklist = () => {
   return dispatch => {
     dispatch(requestChecklist());
-    const url = "http://localhost:3001/api/checklist";
+    const url = "http://localhost:3001/api/data";
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append('Accept','application/json');
@@ -217,6 +216,92 @@ export const getChecklist = () => {
     .catch( err => {
       console.log("The error is ", err);
       receiveChecklist([]);
+    });
+  }
+}
+
+// Get user checklist
+
+const requestUserChecklist = ()=> {
+  return {
+    type: actionTypes.REQUEST_USER_CHECKLIST
+  };
+}
+
+const receiveUserChecklist = (userchecklist) =>{
+  return {
+    type: actionTypes.RECEIVE_USER_CHECKLIST,
+    userchecklist
+  };
+}
+
+
+export const getUserChecklist = () => {
+  return dispatch => {
+    dispatch(requestUserChecklist());
+    const url = "http://localhost:3001/api/userchecklist";
+    const headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append('Accept','application/json');
+    fetch(url, {
+      headers: headers,
+      method: "GET",
+    })
+    .then(response =>
+      response.json()
+    )
+    .then(response => {
+      dispatch(receiveUserChecklist(response));
+    })
+    .catch( err => {
+      console.log("The error is ", err);
+      receiveUserChecklist([]);
+    });
+  }
+}
+
+
+
+
+/*
+ * Checklist steps
+ */
+
+function requestChecklistSteps() {
+  return {
+    type: actionTypes.REQUEST_CHECKLIST_STEPS
+  };
+}
+
+function receiveChecklistSteps(checklist_steps) {
+  return {
+    type: actionTypes.RECEIVE_CHECKLIST_STEPS,
+    checklist_steps
+  };
+}
+
+export const getChecklistSteps = () => {
+  return dispatch => {
+    dispatch(requestChecklistSteps());
+    console.log('dispatch')
+    const url = "http://localhost:3001/api/checklist_steps";
+    const headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append('Accept','application/json');
+    fetch(url, {
+      headers: headers,
+      method: "GET",
+    })
+    .then(response =>
+      response.json()
+    )
+    .then(response => {
+      dispatch(receiveChecklistSteps(response));
+      console.log(response)
+    })
+    .catch( err => {
+      console.log("The error is ", err);
+      receiveChecklistSteps([]);
     });
   }
 }

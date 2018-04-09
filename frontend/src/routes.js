@@ -6,6 +6,7 @@ import HomeTypes from './containers/HomeTypes';
 import AboutGame from './containers/AboutGame';
 import AboutUs from './containers/AboutUs';
 import Questions from './components/Questions';
+import Checklist from './components/Checklist';
 import Login from './components/partials/Login';
 import Footer from './containers/partials/Footer';
 import history from './history';
@@ -32,6 +33,7 @@ export const MainRoutes = () => {
               <Route path="/" exact component={Home}/>
               <Route path="/hometypes" component={HomeTypes} />
               <Route path="/questions" component={Questions} />
+              <Route path="/checklist" component={Checklist} />
               <Route path="/about-game" component={AboutGame} />
               <Route path="/about-us" component={AboutUs} />
             <Footer/>

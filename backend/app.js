@@ -34,6 +34,15 @@ app.use(cookieParser());
 
 
 // Create Database Connection
+// const dbConnection = mysql.createConnection({
+//   host     : '212.48.71.86',
+//   user     : 'judynjeru_user',
+//   password : ')KGB2r985$vZ',
+//   port     :3306,
+//   database : 'judynjeru_greenhome'
+// })
+
+
 const dbConnection = mysql.createConnection({
   host     : 'localhost',
   user     : 'judy_local',
@@ -56,8 +65,10 @@ app.get(APIPrefix + '/questions', (req, res) => {
   dbConnection.query(sql, (err, result) => {
     if(err) throw err;
       res.send(result);
+      console.log(result)
     });
 });
+
 
 // Get checklist from database
 app.get(APIPrefix + '/checklist', (req, res) => {
@@ -68,18 +79,54 @@ app.get(APIPrefix + '/checklist', (req, res) => {
     });
 });
 
+// // Get choices from database
+// app.get(APIPrefix + '/choices', (req, res) => {
+//   let sql = 'SELECT * FROM choices';
+//   dbConnection.query(sql, (err, result) => {
+//     if(err) throw err;
+//     console.log(result);
+//     res.send(result);
+//   });
+// });
+
 // Get choices from database
-app.get(APIPrefix + '/choices', (req, res) => {
-  let sql = 'SELECT * FROM choices';
+app.get(APIPrefix + '/data', (req, res) => {
+  let sql = 'SELECT * FROM quiz_data';
   dbConnection.query(sql, (err, result) => {
     if(err) throw err;
-    console.log(result);
     res.send(result);
   });
 });
 
+
 // send choices from database
-app.post(APIPrefix + '/choices', (req, res) => {
+app.post(APIPrefix + '/data', (req, res) => {
+
+  //res.send('not Implementd');
+  // get the cookie from the req
+  const token = req.cookies.green_home_token;
+  if (token) {
+    // idToken comes from the client app (shown above)
+
+    firebaseAdmin.auth().verifyIdToken(token)
+      .then(function(decodedToken) {
+        var uid = decodedToken.uid;
+        // console.log(uid);
+      }).catch(function(error) {
+        // Handle error
+        console.log(error);
+        res.send(error);
+      });
+  } else {
+    console.log("not found");
+    res.send("no token found");
+  }
+  // we ask fireadminn is the cookie ok?
+
+});
+
+// send choices from database
+app.post(APIPrefix + '/data', (req, res) => {
 
   //res.send('not Implementd');
   // get the cookie from the req
@@ -180,9 +227,9 @@ app.post(APIPrefix + '/adduser', (req, res) => {
           res.send("token returned! yey!");
         }
       });*/
-      console.log("STARTING REQUEST BODY")
-      console.log(req.body);
-      console.log("returning cookie");
+      // console.log("STARTING REQUEST BODY")
+      // console.log(req.body);
+      // console.log("returning cookie");
       res.cookie('green_home_token', req.body.realToken, tokenCookieOptions);
       // res.send("token returned! yey!");
       storeUserInDatabase(req.body.user.uid, req.body.user.displayName, req.body.user.photoURL, res );
@@ -194,7 +241,6 @@ function storeUserInDatabase(userId, username, picture, res) {
   let sql = `INSERT INTO user_info (userID, username, userImage) VALUES ('${userId}', '${username}', '${picture}')`;
   dbConnection.query(sql, (err, result) => {
     if(err) console.log( err );
-    console.log(result);
     res.send(result);
   });
 }
@@ -211,7 +257,7 @@ app.post(APIPrefix + '/userchoices', (req, res) => {
   req.body.unSelectedChoices.map((choice)=>{
     //values += choice.choiceID + ", ";
     values.push(choice.choiceID);
-    let sql = `INSERT INTO userChecklist (userID, choiceID ) VALUES ('${data.userID}', '${choice.choiceID}')`;
+    let sql = `INSERT INTO user_checklist (userID, choiceID, choice, checklistItem, checklistTip ) VALUES ('${data.userID}', '${choice.choiceID}', '${choice.choice}', '${choice.checklistItem}', '${choice.checklistTip}')`;
     dbConnection.query(sql, (err, result) => {
       if(err) throw err;
       // console.log(result);
@@ -221,7 +267,7 @@ app.post(APIPrefix + '/userchoices', (req, res) => {
   });
 
   let valuesStr = values.join(', ');
-  sql = `SELECT * FROM checklist WHERE choiceID IN (${valuesStr})`;
+  sql = `SELECT * FROM quiz_data WHERE choiceID IN (${valuesStr})`;
   dbConnection.query(sql, (err, result) => {
     // console.log(err);
     // console.log(result);
@@ -231,21 +277,30 @@ app.post(APIPrefix + '/userchoices', (req, res) => {
 });
 
 
+// Get user checklist from database
+app.get(APIPrefix + '/userchecklist', (req, res) => {
+  let sql = 'SELECT * FROM user_checklist';
+  dbConnection.query(sql, (err, result) => {
+    if(err) throw err;
+    res.send(result);
+  });
+});
+
+
+// Get checklist_steps from database
+app.get(APIPrefix + '/checklist_steps', (req, res) => {
+  let sql = 'SELECT * FROM checklist_steps';
+  dbConnection.query(sql, (err, result) => {
+    if(err) throw err;
+      res.send(result);
+    });
+});
+
+
+
+
+
 app.listen(port, ()=>{
   console.log("listening to port: " + port)
 })
 
-
-/*
-// Create table
-
-app.get('/selectedchoices', (req, res) => {
-    let sql = 'CREATE TABLE selected_choice(id int AUTO_INCREMENT, choice VARCHAR(255), PRIMARY KEY(id))';
-    dbConnection.query(sql, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send('selected_choices created ...');
-    });
-});
-
-*/

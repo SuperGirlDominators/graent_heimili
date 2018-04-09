@@ -3,10 +3,15 @@ import questions from './QuestionsReducer'
 import choices from './ChoicesReducer'
 import checklist from './ChecklistReducer'
 import user from './UserReducer'
+import userchecklist from './UserChecklistReducer'
+import checklist_steps from './ChecklistStepsReducer'
+
 
 export default combineReducers({
   questions,
   checklist,
   choices,
-  user
+  user,
+  userchecklist,
+  checklist_steps
 })

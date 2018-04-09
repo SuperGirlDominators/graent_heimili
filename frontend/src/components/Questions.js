@@ -5,6 +5,7 @@ import '../css/Home.css';
 import Login from './partials/Login';
 import whiteMask from '../assets/images/white_mask.png';
 import Question from './partials/Question';
+import Checklist from './Checklist';
 import Choice from './partials/Choice';
 import * as actions from '../actions/actions';
 import firebase from 'firebase';
@@ -18,12 +19,11 @@ class Questions extends Component {
     this.state = {
       currentQuestion: 0,
       login:false,
+      show: false
     };
     this.getNextQuestion = this.getNextQuestion.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.postChecklist = this.postChecklist.bind(this);
-
-
   }
 
   componentDidMount(){
@@ -47,10 +47,8 @@ class Questions extends Component {
   }
 
   handleSubmit() {
-    console.log(firebase.auth().currentUser);
-
     if(firebase.auth().currentUser) {
-      this.setState({login:true});
+      this.setState({login:true}); 
     }
     this.props.actions.postChoices(this.props.choices);
     // console.log(this.props.choices)
@@ -65,6 +63,8 @@ class Questions extends Component {
       }
     });
     this.postChecklist(unSelectedChoices);
+    this.props.history.push('/checklist');
+
   }
 
   postChecklist(unSelectedChoices) {
@@ -93,6 +93,7 @@ class Questions extends Component {
       console.log("The error is ", err);
       // receiveChecklist([]);
     });
+
   }
 
   onClick(e) {
@@ -104,18 +105,23 @@ class Questions extends Component {
     console.log(clickedItems);
   }
 
+  // handleClick(e) {
+  //   e.preventDefault();
+  //   this.props.history.push('/checklist');
+  // }
+
   render() {
     const { questions } = this.props;
+   
     let { choices } = this.props;
     choices = choices.filter(choice => choice.questionID === this.state.currentQuestion+1);
     const isAChoiceSelected = choices.some(choice => choice.value);
-    console.log(!this.state.login);
-    console.log(this.state.currentQuestion === this.props.questions.length-1);
       return (
         <div>
-        <div className="row start-button">
-          <Login destination=""/>
-        </div>
+        
+          <div className="row start-button">
+            <Login destination=""/>
+          </div>
           <div className="container">
             <div className="row">
               <div className="white_curved_mask">
