@@ -5,6 +5,7 @@ import checklist from './ChecklistReducer'
 import user from './UserReducer'
 import userchecklist from './UserChecklistReducer'
 import checklist_steps from './ChecklistStepsReducer'
+import current_step from './CurrentStepReducer'
 
 
 export default combineReducers({
@@ -13,5 +14,6 @@ export default combineReducers({
   choices,
   user,
   userchecklist,
-  checklist_steps
+  checklist_steps,
+  current_step
 })

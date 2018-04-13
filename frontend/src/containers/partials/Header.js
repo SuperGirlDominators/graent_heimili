@@ -1,23 +1,38 @@
 import React, { Component } from 'react';
 import '../../css/Header.css';
-import { Link } from 'react-router-dom';
-import logo from '../../assets/images/logo.png';
+import { Link, NavLink } from 'react-router-dom';
+import logoGreen from '../../assets/images/Logo_graent.png';
+import logoWhite from '../../assets/images/LOGO_2.png';
 import firebase from 'firebase';
 
 
 class Header extends Component {
   constructor(props) {
-      super(props);
-      this.state = { active: '' };
-      this.state = { open: '' };
-      this.onStatusClick = this.onStatusClick.bind(this);
+    super(props);
+    this.state = { 
+      active: '',
+      open: '',
+      scrolled: false
+    };
+    this.onStatusClick = this.onStatusClick.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   onStatusClick() {
-      var toggle = this.state.active === 'active' ? '' : 'active';
-      var toggle2 = this.state.open === 'open' ? '' : 'open';
-      this.setState({active: toggle, open: toggle2 });
+    var toggle = this.state.active === 'active' ? '' : 'active';
+    var toggle2 = this.state.open === 'open' ? '' : 'open';
+    this.setState({active: toggle, open: toggle2 });
+    this.props.toggleMenu();
   }
+
+  handleScroll() {
+    if (window.pageYOffset === 0) {
+      this.setState({ ...this.state, scrolled: false });
+    } else {    
+      this.setState({ ...this.state, scrolled: true });
+    }
+  }
+
   handleLogout() {
     firebase.auth().signOut().then(function() {
       console.log('Signed Out');
@@ -26,16 +41,25 @@ class Header extends Component {
     });
   }
 
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
 
   render() {
+    const scrolled = this.state.scrolled ? 'shrink' : '';
+    const logo = this.state.scrolled ? logoGreen : logoWhite;
     return (
       <div>
-        <header>
+        <header className={scrolled}>
           <nav className="navbar navbar-inverse container">
             <div className="container-fluid">
-              <div className="navbar-header">
+              <div className="navbar-left">
                 <div className="logo ">
-                  <a href="http://localhost:8000/">
+                  <a href="/">
                     <img src={logo} alt="logo"></img>
                   </a>
                 </div>
@@ -52,14 +76,15 @@ class Header extends Component {
                   <div className={`overlay ${this.state.open}`} id="overlay">
                     <nav className="overlay-menu">
                       <ul>
-                        <li><Link to="/about-game">Um listann</Link></li>
-                        <li><a href="#partners">Samstarfsaðilar</a></li>
-                        <li><Link to="/about-us">Um okkur</Link></li>
-                        <li id="login"><Link to="/#login_popup">Innskráning</Link></li>
-                        <li id="login"><button onClick={this.handleLogout}>Logout</button></li>
+                        <li><NavLink to="/">Forsíða</NavLink></li>
+                        <li><NavLink to="/about-game">Um leikinn</NavLink></li>
+                        <li><NavLink to="/education">Fræðsluefni</NavLink></li>
+                        <li><NavLink to="/about-us">Um okkur</NavLink></li>
+                        <li><NavLink to="/companies">Samstarfsaðilar</NavLink></li>
+                        <li id="login"><NavLink to="/#login_popup">Innskráning</NavLink></li>
+                        <li id="logout"><a onClick={this.handleLogout}>Útskráning</a></li>
                       </ul>
                     </nav>
-
                   </div>
                 </div>
               </ul>

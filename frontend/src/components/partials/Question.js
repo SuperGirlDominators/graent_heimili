@@ -20,6 +20,7 @@ class Question extends Component {
     const { totalQuestions, question } = this.props;
     let { currentQuestion } = this.props;
     currentQuestion = currentQuestion + 1;
+
     return (
       <div className="col-md-4">
           <p>

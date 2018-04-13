@@ -1,19 +1,11 @@
 import React from 'react';
 import { Route, Router } from 'react-router-dom';
-import Header from './containers/partials/Header';
-import Home from './containers/Home';
-import HomeTypes from './containers/HomeTypes';
-import AboutGame from './containers/AboutGame';
-import AboutUs from './containers/AboutUs';
-import Questions from './components/Questions';
-import Checklist from './components/Checklist';
-import Login from './components/partials/Login';
-import Footer from './containers/partials/Footer';
 import history from './history';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
+import App from './App'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -27,17 +19,7 @@ export const MainRoutes = () => {
     <div>
       <Provider store={store}>
         <Router history={history}>
-          <div>
-            <Route path="/login" component={Login} />
-            <Header/>
-              <Route path="/" exact component={Home}/>
-              <Route path="/hometypes" component={HomeTypes} />
-              <Route path="/questions" component={Questions} />
-              <Route path="/checklist" component={Checklist} />
-              <Route path="/about-game" component={AboutGame} />
-              <Route path="/about-us" component={AboutUs} />
-            <Footer/>
-          </div>
+          <Route path="/" component={App}/>
         </Router>
       </Provider>
     </div>

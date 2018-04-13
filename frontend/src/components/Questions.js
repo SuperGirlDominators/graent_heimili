@@ -18,8 +18,7 @@ class Questions extends Component {
     super(props);
     this.state = {
       currentQuestion: 0,
-      login:false,
-      show: false
+      login:false
     };
     this.getNextQuestion = this.getNextQuestion.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -48,6 +47,7 @@ class Questions extends Component {
 
   handleSubmit() {
     if(firebase.auth().currentUser) {
+      console.log(firebase.auth().currentUser)
       this.setState({login:true}); 
     }
     this.props.actions.postChoices(this.props.choices);
@@ -62,8 +62,9 @@ class Questions extends Component {
         return true;
       }
     });
+
     this.postChecklist(unSelectedChoices);
-    this.props.history.push('/checklist');
+    
 
   }
 
@@ -72,7 +73,7 @@ class Questions extends Component {
     data.unSelectedChoices = unSelectedChoices;
     // console.log(this.props.profileData.user.uid)
 
-    data.userID =this.props.profileData.user.uid;
+    data.userID = this.props.profileData.user ? this.props.profileData.user.uid : null;
     const url = "http://localhost:3001/api/userchoices";
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
@@ -86,7 +87,8 @@ class Questions extends Component {
       response.json()
     )
     .then(response => {
-      console.log(response);
+      // console.log(response);
+      this.props.profileData.user ? this.props.history.push('/checklist') : false;
       // dispatch(receiveChecklist([]));
     })
     .catch( err => {
@@ -105,22 +107,20 @@ class Questions extends Component {
     console.log(clickedItems);
   }
 
-  // handleClick(e) {
-  //   e.preventDefault();
-  //   this.props.history.push('/checklist');
-  // }
-
   render() {
+    console.log(this.state.login);
+    console.log(this.state.currentQuestion );
+    console.log(this.props.questions.length-1)
     const { questions } = this.props;
-   
     let { choices } = this.props;
     choices = choices.filter(choice => choice.questionID === this.state.currentQuestion+1);
+    // console.log(choices.some(choice => choice.value));
     const isAChoiceSelected = choices.some(choice => choice.value);
       return (
         <div>
         
           <div className="row start-button">
-            <Login destination=""/>
+            <Login destination="/checklist"/>
           </div>
           <div className="container">
             <div className="row">

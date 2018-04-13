@@ -77,8 +77,8 @@ body {
         font-size: 3em; } }
   @media screen and (max-width: 768px) {
     .banner-headline {
-      margin-left: 0;
-      margin-right: 0; } }
+      margin-left: 15px;
+      margin-right: 15px; } }
 
 .support-text h3 {
   font-family: MuktaMalar-Regular;
@@ -268,8 +268,8 @@ body {
         width: 70%; } }
   @media screen and (max-width: 768px) {
     .start-button {
-      margin-left: 0;
-      margin-right: 0; } }
+      margin-left: 15px;
+      margin-right: 15px; } }
 
 .next_button:after, .next_button:before {
   content: "";

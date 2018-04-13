@@ -235,6 +235,20 @@ const receiveUserChecklist = (userchecklist) =>{
   };
 }
 
+//toggle userchecklist
+
+function toggleUserChecklistAction(id) {
+  return {
+    type: actionTypes.TOGGLE_USER_CHECKLIST,
+    id
+  };
+}
+
+export const toggleUserChecklist = (id) => {
+  return dispatch => {
+    dispatch(toggleUserChecklistAction(id));
+  }
+}
 
 export const getUserChecklist = () => {
   return dispatch => {
@@ -261,8 +275,6 @@ export const getUserChecklist = () => {
 }
 
 
-
-
 /*
  * Checklist steps
  */
@@ -283,8 +295,7 @@ function receiveChecklistSteps(checklist_steps) {
 export const getChecklistSteps = () => {
   return dispatch => {
     dispatch(requestChecklistSteps());
-    console.log('dispatch')
-    const url = "http://localhost:3001/api/checklist_steps";
+    const url = "http://localhost:3001/api/checkliststeps";
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append('Accept','application/json');
@@ -297,7 +308,6 @@ export const getChecklistSteps = () => {
     )
     .then(response => {
       dispatch(receiveChecklistSteps(response));
-      console.log(response)
     })
     .catch( err => {
       console.log("The error is ", err);
@@ -305,3 +315,23 @@ export const getChecklistSteps = () => {
     });
   }
 }
+
+
+export const CurrentStep = (current_step)=> {
+  console.log(current_step);
+  return {
+    type: actionTypes.CURRENT_STEP,
+    current_step
+  };
+}
+
+
+
+
+
+
+
+
+
+
+

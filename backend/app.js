@@ -65,7 +65,6 @@ app.get(APIPrefix + '/questions', (req, res) => {
   dbConnection.query(sql, (err, result) => {
     if(err) throw err;
       res.send(result);
-      console.log(result)
     });
 });
 
@@ -257,12 +256,27 @@ app.post(APIPrefix + '/userchoices', (req, res) => {
   req.body.unSelectedChoices.map((choice)=>{
     //values += choice.choiceID + ", ";
     values.push(choice.choiceID);
-    let sql = `INSERT INTO user_checklist (userID, choiceID, choice, checklistItem, checklistTip ) VALUES ('${data.userID}', '${choice.choiceID}', '${choice.choice}', '${choice.checklistItem}', '${choice.checklistTip}')`;
-    dbConnection.query(sql, (err, result) => {
+    let sql = `INSERT INTO user_checklist (userID, choiceID, choice, checklistID, checklistStep, checklistItem, checklistTip ) VALUES ('${data.userID}', '${choice.choiceID}', '${choice.choice}', '${choice.checklistID}', '${choice.checklistStep}', '${choice.checklistItem}', '${choice.checklistTip}')`;
+    let sqlSelect = `SELECT * FROM user_checklist`;
+    let shouldInsert = true;
+    dbConnection.query(sqlSelect, (err, result) => {
       if(err) throw err;
-      // console.log(result);
-      // res.send(result);
-      // values = values.slice(0, -3);
+      result.forEach ((row) => {
+        console.log(row.userID);
+        console.log(data.userID);
+        if( row.userID === data.userID && row.choiceID === row.choiceID) {
+          shouldInsert = false;
+          console.log('i work');
+        }
+      });
+      if (shouldInsert) {
+        dbConnection.query(sql, (err, result) => {
+          if(err) throw err;
+          // console.log(result);
+          // res.send(result);
+          // values = values.slice(0, -3);
+        });
+      }
     });
   });
 
@@ -277,6 +291,7 @@ app.post(APIPrefix + '/userchoices', (req, res) => {
 });
 
 
+
 // Get user checklist from database
 app.get(APIPrefix + '/userchecklist', (req, res) => {
   let sql = 'SELECT * FROM user_checklist';
@@ -287,14 +302,17 @@ app.get(APIPrefix + '/userchecklist', (req, res) => {
 });
 
 
-// Get checklist_steps from database
-app.get(APIPrefix + '/checklist_steps', (req, res) => {
+// Get checklist steps from database
+app.get(APIPrefix + '/checkliststeps', (req, res) => {
   let sql = 'SELECT * FROM checklist_steps';
   dbConnection.query(sql, (err, result) => {
     if(err) throw err;
       res.send(result);
     });
 });
+
+
+
 
 
 

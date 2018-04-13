@@ -15,7 +15,7 @@ class Choice extends Component {
     return (
       <div>
         <label className='my-checkbox'>
-          <input onClick={this.onItemClick} type='checkbox'checked={choice.value} />
+          <input onClick={this.onItemClick} type='checkbox' checked={choice.value} />
           <span>{choice.choice}</span>
         </label>
       </div>

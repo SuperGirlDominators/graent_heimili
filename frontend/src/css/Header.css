@@ -20,6 +20,25 @@ header {
 .logo img {
   width: 150px; }
 
+.shrink .logo img {
+  width: 125px; }
+
+.shrink .navbar {
+  margin-top: 1%;
+  padding: 0;
+  margin-bottom: 7px; }
+
+.shrink {
+  background-color: #ffffff;
+  transition: all 0.5s ease;
+  box-shadow: 0 8px 20px -4px #0000002e; }
+
+.shrink .nav.navbar-right {
+  margin-top: 10px; }
+
+.shrink .button_container span {
+  background: #6db4ac; }
+
 .button_container {
   position: relative;
   top: 5%;
@@ -60,7 +79,7 @@ header {
   @media screen and (max-width: 768px) {
     .button_container {
       position: absolute;
-      top: 40%; } }
+      top: 12%; } }
 
 .overlay {
   position: fixed;
@@ -119,9 +138,10 @@ header {
           text-decoration: none; }
           .overlay nav ul li a:hover, .overlay nav ul li a:focus, .overlay nav ul li a:active:after {
             width: 100%;
-            text-transform: uppercase;
+            text-decoration: underline;
             transition-timing-function: ease-out;
-            transition: 0.25s; }
+            transition: 0.25s;
+            cursor: pointer; }
 
 @keyframes fadeInRight {
   0% {
