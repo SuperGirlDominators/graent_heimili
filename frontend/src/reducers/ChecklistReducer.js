@@ -6,7 +6,6 @@ const initState = {
 };
 
 export default (state = initState, action) => {
-  // console.log(action);
   switch (action.type) {
     case actionTypes.REQUEST_CHECKLIST:
       return {...state, isRequestingChecklist: true};

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Panel } from 'react-bootstrap';
 
 export default class AboutPortrait extends Component {
-
+    
     constructor(props) {
         super(props);
 

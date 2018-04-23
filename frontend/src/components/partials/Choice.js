@@ -13,14 +13,14 @@ class Choice extends Component {
   render() {
     const { choice } = this.props;
     return (
-      <div>
-        <label className='my-checkbox'>
+      <div className='whiteBackground'>
+        <label className='my-checkbox' id="my">
           <input onClick={this.onItemClick} type='checkbox' checked={choice.value} />
           <span>{choice.choice}</span>
         </label>
       </div>
     );
-  }
+  } 
 }
 
 export default Choice;

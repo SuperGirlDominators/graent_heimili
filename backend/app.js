@@ -32,7 +32,6 @@ app.use((req, res, next)=>{
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-
 // Create Database Connection
 // const dbConnection = mysql.createConnection({
 //   host     : '212.48.71.86',
@@ -41,7 +40,6 @@ app.use(cookieParser());
 //   port     :3306,
 //   database : 'judynjeru_greenhome'
 // })
-
 
 const dbConnection = mysql.createConnection({
   host     : 'localhost',
@@ -68,7 +66,6 @@ app.get(APIPrefix + '/questions', (req, res) => {
     });
 });
 
-
 // Get checklist from database
 app.get(APIPrefix + '/checklist', (req, res) => {
   let sql = 'SELECT * FROM checklist';
@@ -77,16 +74,6 @@ app.get(APIPrefix + '/checklist', (req, res) => {
       res.send(result);
     });
 });
-
-// // Get choices from database
-// app.get(APIPrefix + '/choices', (req, res) => {
-//   let sql = 'SELECT * FROM choices';
-//   dbConnection.query(sql, (err, result) => {
-//     if(err) throw err;
-//     console.log(result);
-//     res.send(result);
-//   });
-// });
 
 // Get choices from database
 app.get(APIPrefix + '/data', (req, res) => {
@@ -97,16 +84,13 @@ app.get(APIPrefix + '/data', (req, res) => {
   });
 });
 
-
 // send choices from database
 app.post(APIPrefix + '/data', (req, res) => {
-
   //res.send('not Implementd');
   // get the cookie from the req
   const token = req.cookies.green_home_token;
   if (token) {
     // idToken comes from the client app (shown above)
-
     firebaseAdmin.auth().verifyIdToken(token)
       .then(function(decodedToken) {
         var uid = decodedToken.uid;
@@ -147,7 +131,6 @@ app.post(APIPrefix + '/data', (req, res) => {
     res.send("no token found");
   }
   // we ask fireadminn is the cookie ok?
-
 });
 
 function getFirebaseUser(uid, cb) {
@@ -262,11 +245,8 @@ app.post(APIPrefix + '/userchoices', (req, res) => {
     dbConnection.query(sqlSelect, (err, result) => {
       if(err) throw err;
       result.forEach ((row) => {
-        console.log(row.userID);
-        console.log(data.userID);
         if( row.userID === data.userID && row.choiceID === row.choiceID) {
           shouldInsert = false;
-          console.log('i work');
         }
       });
       if (shouldInsert) {
@@ -283,14 +263,10 @@ app.post(APIPrefix + '/userchoices', (req, res) => {
   let valuesStr = values.join(', ');
   sql = `SELECT * FROM quiz_data WHERE choiceID IN (${valuesStr})`;
   dbConnection.query(sql, (err, result) => {
-    // console.log(err);
-    // console.log(result);
     if(err) throw err;
     res.send(result);
   });
 });
-
-
 
 // Get user checklist from database
 app.get(APIPrefix + '/userchecklist', (req, res) => {
@@ -301,7 +277,6 @@ app.get(APIPrefix + '/userchecklist', (req, res) => {
   });
 });
 
-
 // Get checklist steps from database
 app.get(APIPrefix + '/checkliststeps', (req, res) => {
   let sql = 'SELECT * FROM checklist_steps';
@@ -310,9 +285,6 @@ app.get(APIPrefix + '/checkliststeps', (req, res) => {
       res.send(result);
     });
 });
-
-
-
 
 
 

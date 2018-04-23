@@ -8,7 +8,22 @@ class ChecklistItem extends Component {
     super(props);
     this.onItemClick = this.onItemClick.bind(this);
     this.handleClick = this.handleClick.bind(this);
+  }
 
+  componentDidMount() {
+ 
+    $(document).ready(function() {   
+      $(".checklist_tip").mouseover(function() {
+        $(this).find(".fa-question").css("color", "#fff");
+        $(this).css('background-color', '#249084');
+      }); 
+
+      $(".checklist_tip").mouseleave(function() {
+        $(this).find(".fa-question").css("color", "#249084");
+        $(this).css('background-color', '#fff');
+      });
+     
+    });
   }
 
   onItemClick() {
@@ -24,12 +39,14 @@ class ChecklistItem extends Component {
   render() {
     const { checklist } = this.props;
     return (
-      <div>
+      <div className='label_wrap'>
         <label className='my-checklist'>
             <input type='checkbox' onClick={this.onItemClick} type='checkbox' checked={checklist.value} />
             <span>{checklist.checklistItem}</span>
-            <button onClick={this.handleClick}  className="questionmark q q1" >
-                <i className="fa fa-question-circle"></i>
+            <button onClick={this.handleClick}  className="checklist_tip c_tip q1" >
+              <i className="fas fa-question"></i>
+
+              <div class="tooltip">Smelltu á mig til að fá nánari útskýringar</div>
             </button>
         </label>
       </div>

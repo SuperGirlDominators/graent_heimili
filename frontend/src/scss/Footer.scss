@@ -1,24 +1,31 @@
 @import "_mediaqueries.scss";
 
+.menu-active {
+    z-index: 2;
+
+    .share-social {
+        .social {
+            color: #249084;
+            cursor: pointer;
+            border: 2px solid #249084;}
+    }
+}
+
 .share-social {
-    position: relative;
-    text-align:right;
-    margin-top: 150px;
-    z-index: 10;
 
     .social {
-        display:inline-block;
-        width:40px;
-        height:40px;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
         margin-left: 20px;
-        line-height:40px;
-        font-size:20px;
-        text-align:center;
-        color:#fff;
-        border:2px solid #fff;
-        border-radius:50%;
-        overflow:hidden;
-        transition:color .3s;
+        line-height: 40px;
+        font-size: 20px;
+        text-align: center;
+        color: #fff;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        overflow: hidden;
+        transition: color .3s;
 
         &:hover {
             color: #249084;
@@ -26,20 +33,5 @@
             border: 2px solid #249084;
         }
     }
-
-    .social_overlay {
-
-        color:#249084;
-        border:2px solid #249084;
-        border-radius:50%;
-        overflow:hidden;
-        transition:color .3s;
-
-        &:hover {
-            color: #249084;
-            cursor: pointer;
-            border: 2px solid #249084;
-        }
-    }
-
 }
+

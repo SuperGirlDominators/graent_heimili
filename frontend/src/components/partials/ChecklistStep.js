@@ -39,12 +39,15 @@ class ChecklistStep extends Component {
 
         return (
             <div className="col-md-4">
-                <p>
-                    SKREF {currentStep}/{totalSteps}
+                <p className="checklist_step">
+                    Skref {currentStep} af {totalSteps}
                 </p>
-                <h1>
+                <h1 className="checklist_name">
                     { checklist_step && checklist_step.checklistName }
                 </h1>
+                <p className="checklist_info">
+                    { checklist_step && checklist_step.checklistInfo }
+                </p>
                 <div className="photoChecklist">
                     <div className="side">
                         <img src={this.dataURL} alt="photo of a home"/>

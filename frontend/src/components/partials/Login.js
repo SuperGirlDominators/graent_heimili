@@ -5,6 +5,7 @@ import '../../css/Home.css';
 import * as actions from '../../actions/actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
+import $ from 'jquery';
 
 class Login extends Component {
   state = {
@@ -13,12 +14,31 @@ class Login extends Component {
 
   constructor() {
    super();
+
    this.handleClick = this.handleClick.bind(this);
    this.handleUserLoginResponse = this.handleUserLoginResponse.bind(this);
    this.handleFacebookLogin = this.handleFacebookLogin.bind(this);
    this.handleGoogleLogin = this.handleGoogleLogin.bind(this);
    this.handleLogout = this.handleLogout.bind(this);
  }
+
+  componentDidMount() {
+    $(document).ready(function() {     
+      $('.button-two').hover(function(){   
+        $('.button-one').removeClass('focus');  
+        $('.button-two').addClass('focus');  
+        $("#choice").html("Ekki með aðgang?");
+        $("#choice_1").html("Skráðu þig inn á eftir");      
+      });
+
+      $('.button-one').hover(function(){   
+        $('.button-two').removeClass('focus');  
+        $('.button-one').addClass('focus');    
+        $("#choice").html("EÐA");
+        $("#choice_1").html("Skelltu þér þá yfir í nýskráningu!");   
+      });
+    }); 
+  }
 
   componentWillMount(){
     // Initialize Firebase
@@ -99,13 +119,13 @@ class Login extends Component {
   }
 
 
-  render() {
-  const { navigate } = this.state
 
-   // here is the important part
-   if (navigate) {
-     return <Redirect to={this.props.destination} push={true} />
-   }
+  render() {
+  
+    const { navigate } = this.state
+    if (navigate) {
+      return <Redirect to={this.props.destination} push={true} />
+    }
     return (
       <div id="login_popup" className="login_overlay">
         <div className="login_popup">
@@ -113,8 +133,8 @@ class Login extends Component {
           <div className="content">
             <div className="login_type_selection">
               <p>
-                <a className=" login_type button-one" id="new_login" title="New Login">{/*onClick="newUserLogin()"*/}Nýskráning</a>
-                <a className="login_type button-two" id="login" title="Login">{/*onClick="Login()"*/}Innskráning</a>
+                <a className="login_type button-one focus" id="new_login" title="New Login">Nýskráning</a>
+                <a className="login_type button-two"  id="login" title="Login">Innskráning</a>
               </p>
               <p>Skráðu þig í gegnum samfélagsmiðla</p>
               <p>Til þess að fá aðgang að tékklistanum þínum þá þarftu að vera innskráður</p>
@@ -157,5 +177,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
-
-// export default Login;

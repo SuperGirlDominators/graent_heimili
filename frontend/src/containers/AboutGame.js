@@ -5,9 +5,7 @@ import StepOneImage from '../assets/images/stepOne.png';
 import StepTwoImage from '../assets/images/stepTwo.png';
 import StepThreeImage from '../assets/images/stepThree.png';
 
-
 class AboutGame extends Component {
-
   componentWillMount(){
     document.body.id= "aboutgame";
   }

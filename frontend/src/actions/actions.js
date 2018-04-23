@@ -38,13 +38,6 @@ export const createProfile = (profileData)=>{
         console.log("The error is ", err)
       });
     });
-
-
-
-    /*return {
-      type: actionTypes.CREATE_PROFILE,
-      profileData: profileData
-    }*/
   }
 }
 
@@ -195,7 +188,6 @@ const receiveChecklist = () =>{
   };
 }
 
-
 export const getChecklist = () => {
   return dispatch => {
     dispatch(requestChecklist());
@@ -220,8 +212,8 @@ export const getChecklist = () => {
   }
 }
 
-// Get user checklist
 
+// Get user checklist
 const requestUserChecklist = ()=> {
   return {
     type: actionTypes.REQUEST_USER_CHECKLIST
@@ -274,7 +266,6 @@ export const getUserChecklist = () => {
   }
 }
 
-
 /*
  * Checklist steps
  */
@@ -316,9 +307,7 @@ export const getChecklistSteps = () => {
   }
 }
 
-
 export const CurrentStep = (current_step)=> {
-  console.log(current_step);
   return {
     type: actionTypes.CURRENT_STEP,
     current_step

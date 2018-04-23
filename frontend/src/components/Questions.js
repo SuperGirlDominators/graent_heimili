@@ -40,21 +40,19 @@ class Questions extends Component {
 
     if(currQuest.currentQuestion === this.props.questions.length) {
       this.handleSubmit();
-    } else {
+    } 
+    else {
       this.setState(currQuest);
     }
   }
 
   handleSubmit() {
     if(firebase.auth().currentUser) {
-      console.log(firebase.auth().currentUser)
+      // console.log(firebase.auth().currentUser)
       this.setState({login:true}); 
     }
     this.props.actions.postChoices(this.props.choices);
-    // console.log(this.props.choices)
-
     const choicesValue = this.props.choices;
-
     const unSelectedChoices = choicesValue.filter((choice)=> {
       if(choice.value) {
         return false;
@@ -62,17 +60,13 @@ class Questions extends Component {
         return true;
       }
     });
-
     this.postChecklist(unSelectedChoices);
-    
-
   }
 
   postChecklist(unSelectedChoices) {
     const data = {};
     data.unSelectedChoices = unSelectedChoices;
     // console.log(this.props.profileData.user.uid)
-
     data.userID = this.props.profileData.user ? this.props.profileData.user.uid : null;
     const url = "http://localhost:3001/api/userchoices";
     const headers = new Headers();
@@ -87,15 +81,12 @@ class Questions extends Component {
       response.json()
     )
     .then(response => {
-      // console.log(response);
       this.props.profileData.user ? this.props.history.push('/checklist') : false;
-      // dispatch(receiveChecklist([]));
     })
     .catch( err => {
       console.log("The error is ", err);
       // receiveChecklist([]);
     });
-
   }
 
   onClick(e) {
@@ -104,55 +95,52 @@ class Questions extends Component {
     let clickedItem = e.target.value;
     // console.log(e.target.value);
     clickedItems.push(clickedItem);
-    console.log(clickedItems);
   }
 
   render() {
-    console.log(this.state.login);
-    console.log(this.state.currentQuestion );
-    console.log(this.props.questions.length-1)
     const { questions } = this.props;
     let { choices } = this.props;
     choices = choices.filter(choice => choice.questionID === this.state.currentQuestion+1);
     // console.log(choices.some(choice => choice.value));
     const isAChoiceSelected = choices.some(choice => choice.value);
-      return (
-        <div>
-        
-          <div className="row start-button">
-            <Login destination="/checklist"/>
-          </div>
-          <div className="container">
-            <div className="row">
-              <div className="white_curved_mask">
-                <img className="target white_curved_mask" src={whiteMask} alt="Masked banner"/>
-              </div>
+    return (
+      <div>
+        <div className="row start-button">
+          <Login destination="/checklist"/>
+        </div>
+        <div className="container">
+          <div className="row">
+            <div className="white_curved_mask">
+              <img className="target white_curved_mask" src={whiteMask} alt="Masked banner"/>
             </div>
           </div>
-          <div className="container centerVerticalQuestions">
-            <div className="row">
-              <Question
-                currentQuestion={this.state.currentQuestion}
-                totalQuestions={questions.length}
-                question={questions[this.state.currentQuestion]}
-              />
+        </div>
+        <div className="container centerVerticalQuestions">
+          <div className="row">
+            <Question
+              currentQuestion={this.state.currentQuestion}
+              totalQuestions={questions.length}
+              question={questions[this.state.currentQuestion]}
+            />
 
-              <div className="col-md-8 positionToRight">
+            <div className="col-md-8 positionToRight">
               {
-                 choices.map((choice, i) =>
-                   <Choice key={i} choice={choice} onToggle={this.props.actions.toggleChoice}/>
-                 )
+                choices.map((choice, i) =>
+                  <Choice key={i} choice={choice} onToggle={this.props.actions.toggleChoice}/>
+                )
               }
-              </div>
             </div>
           </div>
+        </div>
           { isAChoiceSelected &&
             <a className="play-button-outer" href={(this.state.currentQuestion === this.props.questions.length-1 ) && (!this.state.login) ? "#login_popup": "#" } style={{ display: "block" }} id="next_question" onClick={this.getNextQuestion}>
-              <div className="play-button"></div>
+              <div className="play-button">
+                <p className="button_text">áfram</p>
+              </div>
             </a>
           }
-        </div>
-      );
+      </div>
+    );
   }
 }
 

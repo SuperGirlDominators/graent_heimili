@@ -162,6 +162,17 @@ body {
       margin: 0px 40px 0px 40px; }
       .start-button .login_popup .content .login_type_selection {
         margin-top: 70px; }
+        .start-button .login_popup .content .login_type_selection .focus {
+          background: #249084;
+          outline: none;
+          color: #FFFFFF;
+          cursor: pointer; }
+        .start-button .login_popup .content .login_type_selection .notactive {
+          background: #FFFFFF !important;
+          color: #249084 !important; }
+        .start-button .login_popup .content .login_type_selection .active {
+          background: #249084 !important;
+          color: #FFFFFF !important; }
         .start-button .login_popup .content .login_type_selection p:nth-child(2) {
           font-family: TitilliumWeb-SemiBold;
           font-size: 1.1em;
@@ -188,25 +199,30 @@ body {
         -webkit-transition: all 0.2s;
         transition: all 0.2s; }
       .start-button .login_popup .content #new_login {
-        margin-right: -2px; }
-        .start-button .login_popup .content #new_login:focus {
-          background: #249084;
-          outline: none; }
+        margin-right: -2px;
+        -webkit-transition: all 1s ease-in-out;
+        -moz-transition: all 1s ease-in-out;
+        -o-transition: all 1s ease-in-out;
+        -ms-transition: all 1s ease-in-out; }
         .start-button .login_popup .content #new_login:hover {
           background: #249084;
           padding-top: 12px;
           padding-bottom: 12px;
           color: #FFFFFF;
-          margin-right: -5px;
+          margin-right: 1px;
           text-decoration: none; }
       .start-button .login_popup .content #login {
-        margin-left: -2px; }
+        margin-left: -2px;
+        -webkit-transition: all 1s ease-in-out;
+        -moz-transition: all 1s ease-in-out;
+        -o-transition: all 1s ease-in-out;
+        -ms-transition: all 1s ease-in-out; }
         .start-button .login_popup .content #login:hover {
           background: #249084;
           padding-top: 12px;
           padding-bottom: 12px;
           color: #FFFFFF;
-          margin-left: -5px;
+          margin-left: 0px;
           text-decoration: none; }
       .start-button .login_popup .content #login_options {
         text-align: center; }

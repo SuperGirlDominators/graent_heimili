@@ -187,6 +187,23 @@ body {
             .login_type_selection {
                 margin-top:70px;
 
+                .focus {
+                    background: $color-green;
+                    outline:none;
+                    color: $color-white;
+                    cursor: pointer;
+                }
+
+                .notactive {
+                    background: $color-white !important;
+                    color: $color-green !important;
+                }
+
+                .active {
+                    background: $color-green !important;
+                    color: $color-white !important;
+                }
+
                 p:nth-child(2) {
                     font-family: TitilliumWeb-SemiBold;
                     font-size: 1.1em;
@@ -223,33 +240,35 @@ body {
 
             #new_login {
                 margin-right: -2px;
-
-                &:focus {
-                  background: $color-green;
-                  outline:none;
-                }
-
+                -webkit-transition: all 1s ease-in-out;
+                -moz-transition: all 1s ease-in-out;
+                -o-transition: all 1s ease-in-out;
+                -ms-transition: all 1s ease-in-out;
+            
                 &:hover {
                     background: $color-green;
                     padding-top: 12px;
                     padding-bottom: 12px;
                     color:$color_white;
-                    margin-right: -5px;
+                    margin-right: 1px;
                     text-decoration: none;
                 }
             }
 
             #login {
                 margin-left: -2px;
-
+                -webkit-transition: all 1s ease-in-out;
+                -moz-transition: all 1s ease-in-out;
+                -o-transition: all 1s ease-in-out;
+                -ms-transition: all 1s ease-in-out;
+                
                 &:hover {
                     background: $color-green;
                     padding-top: 12px;
                     padding-bottom: 12px;
                     color:$color_white;
-                    margin-left: -5px;
+                    margin-left: 0px;
                     text-decoration: none;
-
                 }
             }
 
