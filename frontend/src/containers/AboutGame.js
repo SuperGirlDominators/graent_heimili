@@ -27,7 +27,7 @@ class AboutGame extends Component {
           <div className="row">
             <div className="col-md-12">
               <h1 className="headline">
-                Um leikinn
+                Um listann
               </h1>
               <h2 className="subHeadline">
                   Við hjálpum þér að gera heimilið þitt umhverfisvænt<br/> í þremur skemmtilegum skrefum!
@@ -35,48 +35,48 @@ class AboutGame extends Component {
             </div>
           </div>
           <div className="row steps">
-              <div className="col-xs-12 col-md-3">
+              <div className="col-xs-3 col-md-3">
                   <div id="pointerLightGreen">
                       <p className="steps_Headline">Skref 1</p>
                   </div>
               </div>
-              <div className="col-xs-12 col-md-6">
+              <div className="col-xs-6 col-md-6">
                   <div id="pointerDarkGreen"></div>
                   <p className="steps_subtext">Þú svarar nokkrum auðveldum<br/>spurningum um heimilið</p>
               </div>
-              <div className="col-xs-12 col-md-3">
+              <div className="col-xs-3 col-md-3">
                   <div id="pointerWhite">
                       <img className="imageOne" src={StepOneImage} alt="icon"/>
                   </div>
               </div>
           </div>
           <div className="row steps">
-              <div className="col-xs-12 col-md-3">
+              <div className="col-xs-3 col-md-3">
                   <div id="pointerLightGreen">
                       <p className="steps_Headline">Skref 2</p>
                   </div>
               </div>
-              <div className="col-xs-12 col-md-6">
+              <div className="col-xs-6 col-md-6">
                   <div id="pointerDarkGreen"></div>
                   <p className="steps_subtext">Við útbúum flottan tékklista<br/>fyrir þig út frá svörunum þínum</p>
               </div>
-              <div className="col-xs-12 col-md-3">
+              <div className="col-xs-3 col-md-3">
                   <div id="pointerWhite">
                       <img className="imageTwo" src={StepTwoImage} alt="icon"/>
                   </div>
               </div>
           </div>
           <div className="row steps">
-              <div className="col-xs-12 col-md-3">
+              <div className="col-xs-3 col-md-3">
                   <div id="pointerLightGreen">
                       <p className="steps_Headline">Skref 3</p>
                   </div>
               </div>
-              <div className="col-xs-12 col-md-6">
+              <div className="col-xs-6 col-md-6">
                   <div id="pointerDarkGreen"></div>
                   <p className="steps_subtext">Þú fylgir listanum sem hjálpar þér að gera heimilið umhverfisvænna!</p>
               </div>
-              <div className="col-xs-12 col-md-3">
+              <div className="col-xs-3 col-md-3">
                   <div id="pointerWhite">
                       <img className="imageThree" src={StepThreeImage} alt="icon"/>
                   </div>
