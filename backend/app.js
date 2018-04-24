@@ -42,11 +42,11 @@ app.use(cookieParser());
 // })
 
 const dbConnection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'judy_local',
-  password : '',
-  port     :8889,
-  database : 'green_home'
+  host     : 'kcpgm0ka8vudfq76.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
+  user     : 'qfsaae7nziqd5iub',
+  password : 'n7lrum0xc1ei1fzo',
+  port     :3306,
+  database : 'rj5703edlgmbgefv'
 })
 
 //Connect to Database
@@ -293,4 +293,3 @@ app.get(APIPrefix + '/checkliststeps', (req, res) => {
 app.listen(port, ()=>{
   console.log("listening to port: " + port)
 })
-
