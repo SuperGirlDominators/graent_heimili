@@ -18,14 +18,6 @@
   font-family: MuktaMalar-Regular;
   src: url("../assets/fonts/MuktaMalar-Regular.ttf"); }
 
-body {
-  margin: 0 auto;
-  padding: 0;
-  height: 100vh;
-  overflow: hidden; }
-  body#hometypespage {
-    background: linear-gradient(90deg, #249084, #3EB490, #4CCC98, #54D99C, #68FFA8); }
-
 .home {
   width: 100%; }
 
@@ -82,14 +74,7 @@ body {
     transform: rotate(180deg);
     display: flex;
     justify-content: center; }
-  .banner_popup .bar {
-    float: left;
-    width: 16%;
-    height: 100%;
-    margin: 0.13%;
-    position: relative;
-    background-color: #d5d5d5; }
-    .banner_popup .bar:after {
+    .banner_popup #wrapper .finished:after {
       display: table;
       content: '';
       background-image: url("../assets/images/success_chr.png");
@@ -106,6 +91,23 @@ body {
       -ms-transform: rotate(180deg);
       -o-transform: rotate(180deg);
       filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); }
+    .banner_popup #wrapper .complete_step_one {
+      background-color: #249084; }
+    .banner_popup #wrapper .complete_step_two {
+      background-color: #347F90; }
+    .banner_popup #wrapper .complete_step_three {
+      background-color: #C83D6B; }
+    .banner_popup #wrapper .complete_step_four {
+      background-color: #D18326; }
+    .banner_popup #wrapper .complete_step_five {
+      background-color: #694694; }
+  .banner_popup .bar {
+    float: left;
+    width: 16%;
+    height: 100%;
+    margin: 0.13%;
+    position: relative;
+    background-color: #d5d5d5; }
     .banner_popup .bar .bar_number {
       display: block;
       margin: 0;
@@ -122,7 +124,6 @@ body {
       -o-transform: rotate(180deg);
       filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); }
   .banner_popup .stepone {
-    background-color: #249084;
     height: 15%; }
     .banner_popup .stepone .one {
       top: 0%; }
@@ -148,21 +149,25 @@ body {
     position: absolute;
     width: 100%; }
   .banner_popup .btn_selection {
-    display: flex;
-    justify-content: flex-end;
     margin: 0 auto;
     width: 80%;
     margin-top: 5%; }
+    .banner_popup .btn_selection button {
+      font-family: TitilliumWeb-Regular; }
     .banner_popup .btn_selection .svg-inline--fa {
-      margin-right: 2em; }
+      margin-right: 1em; }
     .banner_popup .btn_selection .share {
       margin-right: 2%; }
     .banner_popup .btn_selection .btn-lg {
+      width: 180px;
       background-color: #249084;
       color: #FFFFFF;
       border-color: #249084;
       border-radius: 0%;
       outline: none; }
+    .banner_popup .btn_selection .next_step {
+      position: absolute;
+      right: 11.7%; }
   @media screen and (max-width: 768px) {
     .banner_popup {
       width: 70%; } }

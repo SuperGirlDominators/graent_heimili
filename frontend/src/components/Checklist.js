@@ -24,7 +24,7 @@ class Checklist extends Component {
   componentDidUpdate(){
     $(document).ready(function(){
       $('.view_more').click(function(){
-        $('.label_wrap').css("transform","translate(0,-280px)");
+        $('.label_wrap').css("transform","translate(0,-380px)");
         $('.view_up').css("display","block");
         $(this).hide();
       });

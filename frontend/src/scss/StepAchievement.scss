@@ -3,18 +3,6 @@
 @import "_colors.scss";
 
 
-body {
-    margin: 0 auto;
-    padding: 0;
-    height: 100vh;
-    overflow: hidden;
-
-    &#hometypespage {
-        background: linear-gradient(90deg, #249084, #3EB490, #4CCC98, #54D99C, #68FFA8);
-    }
-
-}
-
 .home{
   width:100%;
 }
@@ -88,6 +76,50 @@ body {
         transform: rotate(180deg);
         display: flex;
         justify-content: center;
+
+        .finished {
+
+            &:after {
+                display: table;
+                content:'';
+                background-image: url('../assets/images/success_chr.png');
+                background-repeat: no-repeat;
+                background-size: contain;
+                height: 100%;
+                width: 100%;
+                background-position: 59% 70%;
+                position: relative;
+                top: 100%;
+                max-height: 100px;
+                -webkit-transform: rotate(180deg); 
+                -moz-transform: rotate(180deg); 
+                -ms-transform: rotate(180deg);
+                -o-transform: rotate(180deg);
+                filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+            }
+        }
+
+        .complete_step_one {
+            background-color: $color-green;
+        }
+
+        .complete_step_two {
+            background-color: #347F90;
+        }
+
+        .complete_step_three {
+            background-color: #C83D6B;
+        }
+
+        .complete_step_four {
+            background-color: #D18326;
+        }
+
+        .complete_step_five {
+            background-color: #694694;
+        }
+           
+
     }
     
     .bar {
@@ -99,26 +131,6 @@ body {
         background-color:#d5d5d5;
 
 
-
-        &:after {
-            display: table;
-            content:'';
-            background-image: url('../assets/images/success_chr.png');
-            background-repeat: no-repeat;
-            background-size: contain;
-            height: 100%;
-            width: 100%;
-            background-position: 59% 70%;
-            position: relative;
-            top: 100%;
-            max-height: 100px;
-            -webkit-transform: rotate(180deg); 
-            -moz-transform: rotate(180deg); 
-            -ms-transform: rotate(180deg);
-            -o-transform: rotate(180deg);
-            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-
-        }
 
         .bar_number {
             display:block;
@@ -142,7 +154,6 @@ body {
     }
     
     .stepone {
-        background-color: $color-green;;
         height: 15%;
 
         .one {
@@ -191,14 +202,16 @@ body {
     }
 
     .btn_selection {
-        display: flex;
-        justify-content: flex-end;
         margin: 0 auto;
         width: 80%;
         margin-top: 5%;
 
+        button {
+            font-family: TitilliumWeb-Regular;
+        }
+
         .svg-inline--fa {
-            margin-right:2em;
+            margin-right:1em;
         }
 
         .share {
@@ -206,14 +219,17 @@ body {
         }
     
         .btn-lg {
-            // padding: 6px 34px;
+            width:180px;
             background-color: $color-green;
             color: $color-white;
             border-color:$color-green;
             border-radius: 0%;
             outline:none;
+        }
 
-          
+        .next_step {
+            position: absolute;
+            right: 11.7%;
         }
     }
 

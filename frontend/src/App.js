@@ -51,7 +51,7 @@ class App extends Component {
         <Route path="/about-us" component={AboutUs} />
         <Route path="/companies" component={Companies} />
         <Route path="/education" component={Education} />
-        <div className={footerClass} style={{position: 'fixed', bottom: 20, right: '134px'}}>
+        <div className={`socials ${footerClass}`} style={{position: 'fixed', bottom: 20, right: '134px'}}>
         <Footer />
         </div>
       </div>
