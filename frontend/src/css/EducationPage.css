@@ -23,19 +23,19 @@ body {
   left: 0;
   margin: auto;
   width: 34px;
-  height: 55px; }
+  height: 53px; }
 
 .mousey {
-  width: 3px;
+  width: 1px;
   padding: 10px 15px;
-  height: 35px;
+  height: 25px;
   border: 2px solid #fff;
   border-radius: 25px;
   opacity: 0.75;
   box-sizing: content-box; }
 
 .scroller {
-  width: 3px;
+  width: 2px;
   height: 10px;
   border-radius: 25%;
   background-color: #fff;
@@ -55,7 +55,7 @@ body {
     opacity: 0; } }
 
 .dropbtn {
-  width: 60%;
+  width: 77%;
   background-color: white;
   color: #249084;
   padding: 16px;
@@ -79,7 +79,7 @@ body {
   display: none;
   position: absolute;
   background-color: #fff;
-  width: 60%;
+  width: 77%;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   padding: 12px 0px; }
