@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser')
 // const jwt  = require('jsonwebtoken'); // used to create, sign, and verify tokens
 const firebaseAdmin = require('firebase-admin');
 const app = express();
-const port = 3001;
+const port = 8080;
 const APIPrefix = '/api';
 const seacretPassword = 'pass12345678910';
 const tokenCookieOptions = {
@@ -41,12 +41,22 @@ app.use(cookieParser());
 //   database : 'judynjeru_greenhome'
 // })
 
+//...........jawsDB connection..::::...//
+// const dbConnection = mysql.createConnection({
+//   host     : 'kcpgm0ka8vudfq76.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
+//   user     : 'qfsaae7nziqd5iub',
+//   password : 'n7lrum0xc1ei1fzo',
+//   port     :3306,
+//   database : 'rj5703edlgmbgefv'
+// })
+
+
 const dbConnection = mysql.createConnection({
-  host     : 'kcpgm0ka8vudfq76.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
-  user     : 'qfsaae7nziqd5iub',
-  password : 'n7lrum0xc1ei1fzo',
-  port     :3306,
-  database : 'rj5703edlgmbgefv'
+  host     : 'localhost',
+  user     : 'judy_local',
+  password : '',
+  port     : 8889,
+  database : 'green_home'
 })
 
 //Connect to Database
@@ -81,6 +91,7 @@ app.get(APIPrefix + '/data', (req, res) => {
   dbConnection.query(sql, (err, result) => {
     if(err) throw err;
     res.send(result);
+    console.log(result);
   });
 });
 
