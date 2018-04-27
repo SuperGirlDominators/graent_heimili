@@ -10,6 +10,7 @@ import AboutGame from './containers/AboutGame';
 import AboutUs from './containers/AboutUs';
 import Companies from './containers/Companies';
 import Education from './containers/EducationPage';
+import Loader from './components/Loader';
 import Footer from './containers/partials/Footer';
 import './css/App.css';
 
@@ -51,6 +52,7 @@ class App extends Component {
         <Route path="/about-us" component={AboutUs} />
         <Route path="/companies" component={Companies} />
         <Route path="/education" component={Education} />
+        <Route path="/loader" component={Loader} />
         <div className={`socials ${footerClass}`} style={{position: 'fixed', bottom: 20, right: '134px'}}>
         <Footer />
         </div>

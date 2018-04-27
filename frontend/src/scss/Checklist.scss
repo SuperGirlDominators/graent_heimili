@@ -23,6 +23,225 @@
    
   }
 }
+.bg_1 {
+  background-image: linear-gradient(to right top, #2b4e5d, #337788, #3aa2af, #49d0d1, #68ffed) !important;
+
+  #checkbox {
+    input[type="checkbox"]:checked + span {
+      background-color: #347F90 !important;
+      color:#ffffff !important;
+    }
+
+    input[type="checkbox"]:checked + span:before {
+      color: white;
+      background-color: #347F90 !important;
+    }
+
+    span {
+      color:#347F90 !important;
+    }
+
+    input + span:before {
+      color: #347F90;
+      background-color: #347F90;
+    }
+
+    .checklist_tip {
+      border: 3px solid #347F90;
+
+      .fa-question {
+        color: #347F90 !important;
+
+        &:hover {
+          color: #ffffff !important;
+        }
+      }
+
+      &:hover {
+        background-color: #347F90 !important;
+        color: #ffffff !important;
+      }
+
+      .tooltip {
+        color: #347F90 !important;
+      }
+    }
+  }
+
+  .play-button-outer {
+    background-color: #347F90 !important;
+    opacity: 0.8;
+
+    &:hover {
+      opacity:1;
+    }
+  }
+}
+
+.bg_2 {
+  background-image: linear-gradient(to right top, #c63466, #d36c5f, #d49b73, #d5c4a1, #e4e6da) !important;
+
+  #checkbox {
+    input[type="checkbox"]:checked + span {
+      background-color: #C83D6B !important;
+      color:#ffffff !important;
+    }
+
+    input[type="checkbox"]:checked + span:before {
+      color: white;
+      background-color: #C83D6B !important;
+    }
+
+    span {
+      color:#C83D6B !important;
+    }
+
+    input + span:before {
+      color: #C83D6B;
+      background-color: #C83D6B;
+    }
+
+    .checklist_tip {
+      border: 3px solid #C83D6B;
+
+      .fa-question {
+        color: #C83D6B !important;
+
+        &:hover {
+          color: #ffffff !important;
+        }
+      }
+
+      &:hover {
+        background-color: #C83D6B !important;
+        color: #ffffff !important;
+      }
+
+      .tooltip {
+        color: #C83D6B !important;
+      }
+    }
+  }
+
+  .play-button-outer {
+    background-color: #C83D6B !important;
+    opacity: 0.8;
+
+    &:hover {
+      opacity:1;
+    }
+  }
+}
+
+.bg_3 {
+  background-image: linear-gradient(to right top, #bc531c, #d67a19, #eba31a, #f8ce27, #fefb42) !important;
+
+  #checkbox {
+    input[type="checkbox"]:checked + span {
+      background-color: #D18326 !important;
+      color:#ffffff !important;
+    }
+
+    input[type="checkbox"]:checked + span:before {
+      color: white;
+      background-color: #D18326 !important;
+    }
+
+    span {
+      color:#D18326 !important;
+    }
+
+    input + span:before {
+      color: #D18326;
+      background-color: #D18326;
+    }
+
+    .checklist_tip {
+      border: 3px solid #D18326;
+
+      .fa-question {
+        color: #D18326 !important;
+
+        &:hover {
+          color: #ffffff !important;
+        }
+      }
+
+      &:hover {
+        background-color: #D18326 !important;
+        color: #ffffff !important;
+      }
+
+      .tooltip {
+        color: #D18326 !important;
+      }
+    }
+  }
+
+  .play-button-outer {
+    background-color: #D18326 !important;
+    opacity: 0.8;
+
+    &:hover {
+      opacity:1;
+    }
+  }
+}
+
+.bg_4 {
+  background-image: linear-gradient(to right top, #42357f, #664594, #8a56a8, #af68bc, #d47ace) !important;
+
+  #checkbox {
+    input[type="checkbox"]:checked + span {
+      background-color: #694694 !important;
+      color:#ffffff !important;
+    }
+
+    input[type="checkbox"]:checked + span:before {
+      color: white;
+      background-color: #694694 !important;
+    }
+
+    span {
+      color:#694694 !important;
+    }
+
+    input + span:before {
+      color: #694694;
+      background-color: #694694;
+    }
+
+    .checklist_tip {
+      border: 3px solid #694694;
+
+      .fa-question {
+        color: #694694 !important;
+
+        &:hover {
+          color: #ffffff !important;
+        }
+      }
+
+      &:hover {
+        background-color: #694694 !important;
+        color: #ffffff !important;
+      }
+
+      .tooltip {
+        color: #694694 !important;
+      }
+    }
+  }
+
+  .play-button-outer {
+    background-color: #694694 !important;
+    opacity: 0.8;
+
+    &:hover {
+      opacity:1;
+    }
+  }
+}
 
 .checklist_content {
   margin-top:155px;
@@ -35,6 +254,38 @@
     .checklist_name {
       font-family: TitilliumWeb-Bold;
       font-size: 50px;
+    }
+  }
+
+  .checklist_progress {
+    display: flex;
+    flex-direction: row;
+
+    .hl {
+      border: 2px solid #fff;
+      width: 50px;
+      opacity:0.4;
+      margin-top:10px;
+      margin-bottom:10px;
+    }
+    .complete, .current {
+      opacity: 1;
+    }
+
+    .stepone {
+      margin-right:10px;
+    }
+    .steptwo {
+      margin-right:10px;
+    }
+    .stepthree {
+      margin-right:10px;
+    }
+    .stepfour {
+      margin-right:10px;
+    }
+    .stepfive {
+      margin-right:10px;
     }
   }
 
@@ -77,7 +328,7 @@
     .back {
       background: #fff;
       color: #249084;
-      font-family: 'Titillium Web';
+      font-family: Titillium Web;
       font-size: 18px;
       line-height: 30px;
       text-align: center;
@@ -109,7 +360,7 @@
   .view_up {
     display: none;
     position: absolute;
-    top: -58px;
+    top: 24px;
     left: 62%;
     border-color: transparent;
     background-color: transparent;
@@ -140,7 +391,9 @@
     height: 60vh;
     max-width: 50%;
     margin-left: 100px;
+    margin-top: 50px;
     overflow: hidden;
+    z-index: 1;
 
     div:nth-child(1) {
       margin-top: 50px;
@@ -337,7 +590,7 @@
 
   .view_more {
     position: absolute;
-    bottom: -58px;
+    bottom: -44px;
     left: 62%;
     border-color: transparent;
     background-color: transparent;
@@ -413,3 +666,43 @@
   }
 }
 
+
+.stepone {
+  height: 15%;
+
+  .one {
+      top:0%;
+  }
+}
+
+.steptwo {
+  height: 30%;
+
+  .two {
+      top:22%;
+  }
+}
+
+.stepthree {
+  height: 45%;
+
+  .three {
+      top:33%;
+  }
+}
+
+.stepfour {
+  height: 60%;
+
+  .four {
+      top:43%;
+  }
+}
+
+.stepfive {
+  height: 75%;
+
+  .five {
+      top:52%;
+  }
+}

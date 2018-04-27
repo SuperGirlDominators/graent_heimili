@@ -3,10 +3,11 @@ import { Redirect } from 'react-router-dom';
 import '../css/Question.css';
 import '../css/Home.css';
 import Login from './partials/Login';
-import whiteMask from '../assets/images/white_mask.png';
+import whiteMask from '../assets/images/home-banner.jpeg';
 import Question from './partials/Question';
 import Checklist from './Checklist';
 import Choice from './partials/Choice';
+import $ from 'jquery';
 import * as actions from '../actions/actions';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
@@ -31,8 +32,30 @@ class Questions extends Component {
     this.props.actions.getChecklist();
   }
 
+  componentDidUpdate() {
+
+  }
+
   componentWillMount(){
-    document.body.id= "homepage";
+    document.body.id= "quiz_page";
+    $(document).ready(function(){
+      $('.view_more').click(function(){
+        $('.label_wrap').css("transform","translate(0,-480px)");
+        $('.view_up').css("display","block");
+        $(this).hide();
+        console.log('i updated')
+      });
+
+      $('.view_up').click(function(){
+        $('.label_wrap').css("transform","translate(0,0)");
+        $('.view_more').css("display","block");
+        $(this).hide();
+      });
+    });
+  }
+
+  componentDidUpdate(){
+  
   }
 
   getNextQuestion() {
@@ -68,7 +91,7 @@ class Questions extends Component {
     data.unSelectedChoices = unSelectedChoices;
     // console.log(this.props.profileData.user.uid)
     data.userID = this.props.profileData.user ? this.props.profileData.user.uid : null;
-    const url = "http://localhost:3001/api/userchoices";
+    const url = "http://localhost:8080/api/userchoices";
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append('Accept','application/json');
@@ -81,7 +104,12 @@ class Questions extends Component {
       response.json()
     )
     .then(response => {
-      this.props.profileData.user ? this.props.history.push('/checklist') : false;
+      // this.props.history.push('/loader')
+    })
+    .then(response => {
+      this.props.profileData.user ? this.props.history.push('/loader') : false;
+
+      // this.props.profileData.user ? this.props.history.push('/checklist') : false;
     })
     .catch( err => {
       console.log("The error is ", err);
@@ -97,39 +125,66 @@ class Questions extends Component {
     clickedItems.push(clickedItem);
   }
 
+  
+
   render() {
     const { questions } = this.props;
     let { choices } = this.props;
     choices = choices.filter(choice => choice.questionID === this.state.currentQuestion+1);
-    // console.log(choices.some(choice => choice.value));
     const isAChoiceSelected = choices.some(choice => choice.value);
+    console.log(this.state.currentQuestion);
+
+   const bannerImages = [
+      {
+        type: "Image_one",
+        image: require("../assets/images/home-banner.jpeg")
+      },
+      {
+        type: "Image_two",
+        image: require("../assets/images/recycle.jpg")
+      },
+      {
+        type: "Image_three",
+        image: require("../assets/images/home-banner.jpeg")
+      },
+      {
+        type: "Image_four",
+        image: require("../assets/images/home-banner.jpeg")
+      },
+    ];
+
+    if(this.state.currentQuestion === 0) {
+      // white_curved_mask
+      $('.target').addClass('loled'); 
+    }
     return (
       <div>
         <div className="row start-button">
-          <Login destination="/checklist"/>
+          <Login destination="/loader"/>
         </div>
         <div className="container">
           <div className="row">
-            <div className="white_curved_mask">
-              <img className="target white_curved_mask" src={whiteMask} alt="Masked banner"/>
-            </div>
+          <div className="luminance-mask">
+               <img className="target luminance-target" src={bannerImages[this.state.currentQuestion].image} alt="banner mask"></img>
+             </div>
           </div>
         </div>
-        <div className="container centerVerticalQuestions">
+        <div className="container choice_content">
           <div className="row">
             <Question
               currentQuestion={this.state.currentQuestion}
               totalQuestions={questions.length}
               question={questions[this.state.currentQuestion]}
             />
-
-            <div className="col-md-8 positionToRight">
+            <button className="view_up"><i className="up"></i></button>
+            <div className="col-md-8 choice_selection">
               {
                 choices.map((choice, i) =>
                   <Choice key={i} choice={choice} onToggle={this.props.actions.toggleChoice}/>
                 )
               }
             </div>
+            <button className="view_more"><i className="down"></i></button>
           </div>
         </div>
           { isAChoiceSelected &&

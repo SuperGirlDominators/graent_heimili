@@ -36,7 +36,6 @@ class StepAchievement extends Component {
       console.log(i, className, this.props.current_step);
       return className;
     });
-    console.log(classes);
     return (
       <div id="banner_popup" className="banner_overlay">
         <div className="banner_popup" style={styles} >

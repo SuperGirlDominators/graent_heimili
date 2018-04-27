@@ -9,7 +9,7 @@ import firebase from 'firebase';
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       active: '',
       open: '',
       scrolled: false
@@ -28,7 +28,7 @@ class Header extends Component {
   handleScroll() {
     if (window.pageYOffset === 0) {
       this.setState({ ...this.state, scrolled: false });
-    } else {    
+    } else {
       this.setState({ ...this.state, scrolled: true });
     }
   }
