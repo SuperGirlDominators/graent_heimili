@@ -51,10 +51,14 @@ export default class Education extends Component {
         $('.education2').animate({'opacity':'1'},500);
         $('.scroll-downs').animate({'opacity':'0'},500);
         $('.educationSubtext').animate({'opacity':'0'},500);
+        $('.luminance-target').animate({'opacity':'0'},500);
     }
 
     selectPage = ( pageNumber ) => {
         this.page = pageNumber;
+
+        const TabText = document.querySelector('#tab' + pageNumber).textContent;
+        document.querySelector('.dropbtn').textContent = TabText;
     }
 
     activePage = () => {
@@ -73,6 +77,8 @@ export default class Education extends Component {
                 '';
         }
     }
+
+   
 
     render() {
         return (
@@ -101,7 +107,6 @@ export default class Education extends Component {
                             <a onClick={() => this.selectPage(3)} id="tab3" href="#">Uppskriftir að snyrtivörum</a>
                             <a onClick={() => this.selectPage(4)} id="tab4" href="#">Hvar þú getur keypt sniðugar umhverfisvænar vörur</a>
                             <a onClick={() => this.selectPage(5)} id="tab5" href="#">Mikilvægar og góðar upplýsingar</a>
-
                         </div>
                         </div>
                     </div>    

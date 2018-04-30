@@ -47,41 +47,41 @@ import Waypoint from 'react-waypoint';
             <div>
             <div className="container">
                 <div className="row">
-                    <EducationPortrait image={mena} name={"MENA.IS"} text={"Býður upp á snyrtivörur og hreingerningarvörur ásamt ýmsu fyrir eldhúsið."} />                    
-                    <EducationPortrait image={mistur} name={"MISTUR.IS"} text={"​Býður upp á fjölnotavörur fyrir fólk á ferðinni, í eldhúsið og baðherbergið, ásamt snyrtivörum."} />
-                    <EducationPortrait image={graenviska} name={"GRAENVISKA.IS"} text={"Býður upp á vörur fyrir heimilið ásamt snyrtivörum."} />
+                    <EducationPortrait image={mena} name={"MENA.IS"} text={"<p><strong>Mena</strong> býður upp á snyrtivörur og hreingerningarvörur ásamt ýmsu fyrir eldhúsið.</p>"} />                    
+                    <EducationPortrait image={mistur} name={"MISTUR.IS"} text={"​<p><strong>Mistur</strong> býður upp á fjölnotavörur fyrir fólk á ferðinni, í eldhúsið og baðherbergið, ásamt snyrtivörum.</p>"} />
+                    <EducationPortrait image={graenviska} name={"GRAENVISKA.IS"} text={"<p><strong>Græn viska</strong> býður upp á vörur fyrir heimilið ásamt snyrtivörum.</p>"} />
                 </div>  	
             </div>
 
             <div className="container">
                 <div className="row">
-                    <EducationPortrait image={mammaveitbest} name={"MAMMA VEIT BEST"} text={"Heilsubúð með alls konar lífrænar vörur, fæðubótarefni og snyrtivörur."} />                    
-                    <EducationPortrait image={matarbur} name={"MATARBÚR KAJU"} text={"​Hægt er að versla áfyllanlegar vörur í Matarbúri Kaju sem er staðsett á Akranesi."} />
-                    <EducationPortrait image={heilsuhusid} name={"HEILSUHÚSIÐ"} text={"Það er margt hægt að finna hjá Heilsuhúsinu og eru þau með góða vefverslun."} />
+                    <EducationPortrait image={mammaveitbest} name={"MAMMA VEIT BEST"} text={"<p><strong>Mamma veit best</strong> er heilsubúð með alls konar lífrænar vörur, fæðubótarefni og snyrtivörur.</p>"} />                    
+                    <EducationPortrait image={matarbur} name={"MATARBÚR KAJU"} text={"​<p>Hægt er að versla áfyllanlegar vörur í <strong>Matarbúri Kaju</strong> sem er staðsett á Akranesi.</p>"} />
+                    <EducationPortrait image={heilsuhusid} name={"HEILSUHÚSIÐ"} text={"<p>Það er margt hægt að finna hjá <strong>Heilsuhúsinu</strong> og eru þau með góða vefverslun.</p>"} />
                 </div>  	
             </div>
 
             <div className="container">    
                 <div className="row"> 
-                    <EducationPortrait image={tehusid} name={"KRYDD & TEHÚSIÐ"} text={"Hægt að kaupa áfyllingar af tei og kryddi."} />                    
-                    <EducationPortrait image={lauga} name={"FRÚ LAUGA"} text={"​Þessi verslun býður upp á ýmislegt sem hægt er að fylla á, eins og t.d. olíur."} />
-                    <EducationPortrait image={baendur} name={"BÆNDUR Í BÆNUM"} text={"Lífrænn bændamarkaður. Hægt er að kaupa umbúðalausar gúrkur og sömuleiðis er betra fyrir umhverfið að versla frá sínu nánasta umhverfi."} />
+                    <EducationPortrait image={tehusid} name={"KRYDD & TEHÚSIÐ"} text={"<p>Hjá <strong>Krydd og tehúsinu</strong> er hægt að kaupa áfyllingar af tei og kryddi.</p>"} />                    
+                    <EducationPortrait image={lauga} name={"FRÚ LAUGA"} text={"​<p><strong>Frú Lauga</strong> býður upp á ýmislegt sem hægt er að fylla á, eins og t.d. olíur.</p>"} />
+                    <EducationPortrait image={baendur} name={"BÆNDUR Í BÆNUM"} text={"<p><strong>Lífrænn bændamarkaður</strong>. Hægt er að kaupa umbúðalausar gúrkur og sömuleiðis er betra fyrir umhverfið að versla frá sínu nánasta umhverfi.</p>"} />
                 </div>  	
             </div>  
 
             <div className="container">    
                 <div className="row"> 
-                    <EducationPortrait image={kolaportid} name={"KOLAPORTIÐ"} text={"Hægt er að kaupa kartöflur í lausu hjá þeim."} />                    
-                    <EducationPortrait image={klaran} name={"KLARAN.IS"} text={"​Ýmsar umhverfisvænar vörur."} />
-                    <EducationPortrait image={sostrene} name={"SOSTRENE GRENE"} text={"Bjóða upp á te í umbúðalausu."} />
+                    <EducationPortrait image={kolaportid} name={"KOLAPORTIÐ"} text={"<p>Í<strong> Kolaportinu</strong> er hægt er að kaupa kartöflur í lausu hjá þeim.</p>"} />                    
+                    <EducationPortrait image={klaran} name={"KLARAN.IS"} text={"​<p>Verslunin <strong>Klaran</strong>býður upp á ýmsar umhverfisvænar vörur.</p>"} />
+                    <EducationPortrait image={sostrene} name={"SOSTRENE GRENE"} text={"<p>Verslunin </strong>Sostrene Grene</strong>býður upp á te í umbúðalausu.</p>"} />
                 </div>  	
             </div>  
 
             <div className="container">
                 <div className="row">
-                    <EducationPortrait image={org} name={"ORG Í KRINGLUNNI"} text={"Bæði föt og vörur úr umhverfisvænum efnum."} />                    
-                    <EducationPortrait image={hagkaup} name={"HAGKAUP"} text={"​Sonett hreinsivörurnar eru vegan og brotna 100% niður í náttúrunni."} />
-                    <EducationPortrait image={bonus} name={"BÓNUS"} text={"Ecover hreinsivörur, Natracare dömubindi, Gunry umhverfisvænar handsápur og uppþvottalög. Bónus selur einnig fjölnota poka og pappírspoka undir vörurnar þínar. "} />   
+                    <EducationPortrait image={org} name={"ORG Í KRINGLUNNI"} text={"<p>Verslunin <strong>ORG</strong> er með bæði föt og vörur úr umhverfisvænum efnum.</p>"} />                    
+                    <EducationPortrait image={hagkaup} name={"HAGKAUP"} text={"​<p>Sonett hreinsivörurnar fást í <strong>Hagkaup</strong> eru vegan og brotna 100% niður í náttúrunni.</p>"} />
+                    <EducationPortrait image={bonus} name={"BÓNUS"} text={"<p>Ecover hreinsivörur, Natracare dömubindi, Gunry umhverfisvænar handsápur og uppþvottalög. <strong>Bónus</strong> selur einnig fjölnota poka og pappírspoka undir vörurnar þínar.</p>"} />   
                 </div>  	
             </div>          
         
