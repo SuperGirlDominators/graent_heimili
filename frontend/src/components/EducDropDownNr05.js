@@ -24,7 +24,7 @@ import Waypoint from 'react-waypoint';
     
       render() {
         return (
-            <div id="aboutpage">
+            <div>
             <div className="container">
                 <div className="row">
                     <EducationPortraitInfo image={plastMoreInfo} name={"PLAST"} text={""} />                    

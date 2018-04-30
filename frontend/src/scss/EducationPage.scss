@@ -1,8 +1,13 @@
 
+@import "_fonts.scss";
+@import "_mediaqueries.scss";
+@import "_colors.scss";
+@import "_variables.scss";
+
+
 body {
     overflow: scroll;
 }
-
 
 .education {
     font-family: 'Titillium Web', sans-serif;
@@ -13,6 +18,17 @@ body {
     margin-bottom: 20px;
     }
     
+    .education2 {
+        opacity: 0;
+        font-family: 'Titillium Web', sans-serif;
+        font-weight: 600;
+        font-size: 40px;
+        color: white;
+        margin-top: -300px;
+        margin-bottom: 20px;
+        }
+
+
     .educationSubtext {
     font-family: 'Titillium Web', sans-serif;
     font-size: 20px;
@@ -118,6 +134,8 @@ body {
     }
     
  
-
+    .educPageStyle {
+        margin-top:100px;
+    }
    
     

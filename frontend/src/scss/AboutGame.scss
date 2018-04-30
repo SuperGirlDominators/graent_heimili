@@ -14,15 +14,8 @@
 
 #aboutgame {
   background: linear-gradient(90deg, #249084, #3EB490, #4CCC98, #54D99C, #68FFA8);
+}
 
-}
-.luminance-mask {
-  @media screen and (max-width: $breakpoint-tablet) {
-    -webkit-mask-image: none;
-    mask-image: none;
-    opacity:0.5;
-  }
-}
 
 .centerVertical {
   margin-top: 170px;

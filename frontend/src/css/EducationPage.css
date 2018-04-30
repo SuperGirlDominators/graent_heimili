@@ -1,3 +1,23 @@
+@font-face {
+  font-family: TitilliumWeb-Bold;
+  src: url("../assets/fonts/TitilliumWeb-Bold.ttf"); }
+
+@font-face {
+  font-family: TitilliumWeb-SemiBold;
+  src: url("../assets/fonts/TitilliumWeb-SemiBold.ttf"); }
+
+@font-face {
+  font-family: TitilliumWeb-Regular;
+  src: url("../assets/fonts/TitilliumWeb-Regular.ttf"); }
+
+@font-face {
+  font-family: TitilliumWeb-Light;
+  src: url("../assets/fonts/TitilliumWeb-Light.ttf"); }
+
+@font-face {
+  font-family: MuktaMalar-Regular;
+  src: url("../assets/fonts/MuktaMalar-Regular.ttf"); }
+
 body {
   overflow: scroll; }
 
@@ -7,6 +27,15 @@ body {
   font-size: 60px;
   color: white;
   margin-top: 258px;
+  margin-bottom: 20px; }
+
+.education2 {
+  opacity: 0;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  color: white;
+  margin-top: -300px;
   margin-bottom: 20px; }
 
 .educationSubtext {
@@ -105,3 +134,6 @@ body {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown2:hover .dropbtn {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); }
+
+.educPageStyle {
+  margin-top: 100px; }

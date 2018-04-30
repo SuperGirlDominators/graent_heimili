@@ -25,12 +25,12 @@ import Waypoint from 'react-waypoint';
     
       render() {
         return (
-            <div id="aboutpage">
+            <div>
             <div className="container">
                 <div className="row">
-                    <EducationPortrait image={hreinsivokvi} name={"HREINSIVÖKVI GEGN FITU"} text={"Uppskrift að hreinsivökva sem er stórkostlegur til að ná fitu af hvaða yfirborði sem er. Þessi svínvirkar í örbylgjuofninn sem hefur ekki verið þrifinn lengi! 2/3 hluti vatn 1/3 hluti edik 3 tsk matarsódi 4 tsk sápa 8-10 dropar ilmolía að eigin vali 1 spreybrúsi Blandið öllu saman í spreybrúsa og byrjið að þrífa! frettanetid.is "} />                    
-                    <EducationPortrait image={glerudi} name={"HEIMAGERÐUR GLERÚÐI"} text={"​Í apótekum fæst spritt sem flestir nota til sótthreinsunar. En spritt hentar líka einkar vel til þrifa. Búðu til glerúða sem er örugglega sá besti sem þú hefur prófað. 1 bolli spritt 1 bolli vatn 1 teskeið borðedik. Hristið saman og notið á gler, spegla og krómaða fleti. Virkar líka einkar vel á keramik flísar. hreint.is "} />
-                    <EducationPortrait image={klosetthreinsir} name={"KLÓSETTHREINSIR"} text={"Hægt er, á auðveldan hátt, að búa til klósetthreinsi sem ekki aðeins hreinsar klósettskálina vel heldur ilmar einnig frábærlega. Blanda skal saman: ½ bolla af matarsóda ½ bolla af ediki 6 dropum af lavender olíu Hella í klósettskálina og skrúbba eins og vanalega. Ath. að ekki er hægt að geyma þessa blöndu heldur þarf að nota hana strax. nlfi.is  "} />
+                    <EducationPortrait image={hreinsivokvi} name={"HREINSIVÖKVI"} text={"<p>Uppskrift að hreinsivökva sem er stórkostlegur til að ná fitu af hvaða yfirborði sem er. Þessi svínvirkar í örbylgjuofninn sem hefur ekki verið þrifinn lengi!</p><p>2/3 hluti vatn<br /> 1/3 hluti edik<br /> 3 tsk matarsódi<br /> 4 tsk sápa<br /> 8-10 dropar ilmolía að eigin vali<br /> 1 spreybrúsi<br /></p><p> Blandið öllu saman í spreybrúsa og byrjið að þrífa!</p> <p><strong>frettanetid.is</strong></p> "} />                    
+                    <EducationPortrait image={glerudi} name={"GLERÚÐI"} text={"​<p>Í apótekum fæst spritt sem flestir nota til sótthreinsunar. En spritt hentar líka einkar vel til þrifa. Búðu til glerúða sem er örugglega sá besti sem þú hefur prófað.</p><p> 1 bolli spritt<br /> 1 bolli vatn<br /> 1 teskeið borðedik.<br /></p><p> Hristið saman og notið á gler, spegla og krómaða fleti. Virkar líka einkar vel á keramik flísar.</p> <p><strong>hreint.is</strong></p> "} />
+                    <EducationPortrait image={klosetthreinsir} name={"KLÓSETTHREINSIR"} text={"<p>Hægt er, á auðveldan hátt, að búa til klósetthreinsi sem ekki aðeins hreinsar klósettskálina vel heldur ilmar einnig frábærlega.</p><p> Blanda skal saman:<br /> ½ bolla af matarsóda<br /> ½ bolla af ediki<br /> 6 dropum af lavender olíu</p><p> Hella í klósettskálina og skrúbba eins og vanalega.</p><p><strong> Ath.</strong> að ekki er hægt að geyma þessa blöndu heldur þarf að nota hana strax.</p><p><strong> nlfi.is</strong></p>  "} />
                 </div>  	
             </div>
         </div>

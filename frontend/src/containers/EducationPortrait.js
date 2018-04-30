@@ -30,7 +30,7 @@ export default class EducationPortrait extends Component {
                         <div  className="kassi">
                             <div onClick={this.toggleDropDown} style={{ boxShadow: "0px 5px 10px 0px rgba(0,0,0,0.2)", height: 45, paddingTop: 6}}>{name}<i className={dropArrowClass}></i></div>
                             <div className="dropdown-content" style={{ position: 'initial', background: 'none'}}>
-                                <p className="about-text">{text}</p>
+                                <p className="about-text" dangerouslySetInnerHTML={{__html: text}}></p>
                             </div>
                         </div>
                     </div>

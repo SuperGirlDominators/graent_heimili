@@ -27,12 +27,6 @@
 #aboutgame {
   background: linear-gradient(90deg, #249084, #3EB490, #4CCC98, #54D99C, #68FFA8); }
 
-@media screen and (max-width: 768px) {
-  .luminance-mask {
-    -webkit-mask-image: none;
-    mask-image: none;
-    opacity: 0.5; } }
-
 .centerVertical {
   margin-top: 170px;
   padding-left: 0px;

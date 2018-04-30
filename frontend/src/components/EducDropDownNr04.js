@@ -44,7 +44,7 @@ import Waypoint from 'react-waypoint';
     
       render() {
         return (
-            <div id="aboutpage">
+            <div>
             <div className="container">
                 <div className="row">
                     <EducationPortrait image={mena} name={"MENA.IS"} text={"Býður upp á snyrtivörur og hreingerningarvörur ásamt ýmsu fyrir eldhúsið."} />                    
