@@ -43,7 +43,7 @@ app.use(cookieParser());
 
 const dbConnection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'judy_local',
+  user     : 'hrefna_local',
   password : '',
   port     :8889,
   database : 'green_home'
