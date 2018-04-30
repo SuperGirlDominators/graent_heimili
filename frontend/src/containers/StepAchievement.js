@@ -25,7 +25,17 @@ class StepAchievement extends Component {
       backgroundImage: 'url('+BannerImage+')',
       backgroundSize: 'contain'
     };
-    
+    const basicClasses = ['bar stepone ','bar steptwo ','bar stepthree ','bar stepfour ','bar stepfive '];
+    const classes = basicClasses.map((className, i) => {
+      if(i===this.props.current_step-1){
+        className=className + " finished";
+      }
+      if(i<this.props.current_step){
+        className = className + " complete_step_" + ["one","two","three","four","five"][i];
+      }
+      console.log(i, className, this.props.current_step);
+      return className;
+    });
     return (
       <div id="banner_popup" className="banner_overlay">
         <div className="banner_popup" style={styles} >
@@ -35,26 +45,36 @@ class StepAchievement extends Component {
 
           <h1>Vá hvað þú ert frábær!</h1>
           <div id="wrapper">
-            <div class="bar stepfive">
+          
+            <div className={classes[4]}>
               <span class="bar_number five">5</span>
             </div>
-            <div class="bar stepfour">
+           
+           
+            <div className={classes[3]}>
               <span class="bar_number four">4</span>
             </div>
-            <div class="bar stepthree">
+           
+            
+            <div className={classes[2]}>
               <span class="bar_number three">3</span>
             </div>
-            <div class="bar steptwo">
+           
+            
+            <div className={classes[1]}>
               <span class="bar_number two">2</span>
             </div>
-            <div class="bar stepone">
+            
+            <div className={classes[0]}>
               <span class="bar_number one">1</span>
             </div>
+    
             <div class="hl"></div>
           </div>
           <div class="btn_selection">
             <button class="share btn-lg"><i className="fas fa-share-alt"></i>Deila áfram</button>
-            <button class="next_step btn-lg" onClick={this.getNextStep}><i className="fas fa-user-plus"></i>Skora á aðra</button>
+            <button class="challenge btn-lg"><i className="fas fa-user-plus"></i>Skora á aðra</button>
+            <button class="next_step btn-lg" onClick={this.getNextStep}>Næsta Skref</button>
           </div>
         </div>
       </div>

@@ -24,7 +24,7 @@ class Checklist extends Component {
   componentDidUpdate(){
     $(document).ready(function(){
       $('.view_more').click(function(){
-        $('.label_wrap').css("transform","translate(0,-280px)");
+        $('.label_wrap').css("transform","translate(0,-480px)");
         $('.view_up').css("display","block");
         $(this).hide();
       });
@@ -44,6 +44,26 @@ class Checklist extends Component {
 
   getNextStep() {
     const currStep = { currentStep: this.props.current_step + 1 };
+    //change background color
+    if(currStep.currentStep === 1) {
+      $('#checklist').addClass('bg_1'); 
+    }
+    else if(currStep.currentStep === 2) {
+      $('#checklist').removeClass('bg_1'); 
+      $('#checklist').addClass('bg_2'); 
+      $('#checkbox').addClass('bg_teal'); 
+    }
+    else if(currStep.currentStep === 3) {
+      $('#checklist').removeClass('bg_2'); 
+      $('#checklist').addClass('bg_3'); 
+    }
+
+    else if(currStep.currentStep === 4) {
+      $('#checklist').removeClass('bg_3'); 
+      $('#checklist').addClass('bg_4'); 
+    }
+
+
     if(currStep.currentStep === this.props.checklist_steps.length) {
       this.handleSubmit();
     } 
@@ -77,15 +97,12 @@ class Checklist extends Component {
     const isAChecklistSelected = userchecklist.every(checklist => checklist.value);
     return (
         <div>
+      
             <div className="container">
                 <div className="row">
-                    <div className="white_curved_mask">
-                        <img className="target white_curved_mask" src={whiteMask} alt="Masked banner"/>
-                    </div>
-                </div>
-            </div>
-            <div className="container">
-                <div className="row">
+                  <div className="luminance-mask">
+                    <img className="target luminance-target" src={whiteMask} alt="banner mask"></img>
+                  </div>
                     <div className="col-md-12 checklist_content">
                       <ChecklistStep
                         currentStep={this.props.current_step}
@@ -93,13 +110,13 @@ class Checklist extends Component {
                         checklist_step = {checklist_steps[this.props.current_step]}
                       />
                       <button className="view_up"><i className="up"></i></button>
-                      <ul className="col-md-8 checklistItems"> 
+                      <div className="col-md-8 checklistItems"> 
                         {
                           userchecklist.map((checklist, i) =>
                             <ChecklistItem key={i} checklist={checklist} onToggle={this.props.actions.toggleUserChecklist}/>
                           )
                         }       
-                      </ul>
+                      </div>
                       <button className="view_more"><i className="down"></i></button>
                     </div>
                 </div>

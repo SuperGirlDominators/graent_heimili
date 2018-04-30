@@ -36,12 +36,19 @@ class ChecklistStep extends Component {
         const { totalSteps, checklist_step } = this.props;
         let { currentStep } = this.props;
         currentStep = currentStep + 1;
-
+     
         return (
             <div className="col-md-4">
                 <p className="checklist_step">
                     Skref {currentStep} af {totalSteps}
                 </p>
+                <div className="checklist_progress">
+                    <div class={"hl stepone " + (currentStep >= 1 ? 'complete ' : 'not_complete')}></div>
+                    <div class={"hl steptwo " + (currentStep >= 2 ? 'complete' : 'not_complete')}></div>
+                    <div class={"hl stepthree " + (currentStep >= 3 ? 'complete' : 'not_complete')}></div>
+                    <div class={"hl stepfour " + (currentStep >= 4 ? 'complete' : 'not_complete')}></div>
+                    <div class={"hl stepfive " + (currentStep >= 5 ? 'complete' : 'not_complete')}></div>
+                </div>
                 <h1 className="checklist_name">
                     { checklist_step && checklist_step.checklistName }
                 </h1>

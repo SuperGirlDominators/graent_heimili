@@ -1,6 +1,8 @@
 import * as actionTypes from "../actionTypes/actionTypes";
 import firebase from 'firebase';
 
+const databaseURL = "http://localhost:8080/api"
+
 function requestCreateProfile() {
   return {
     type: actionTypes.REQUEST_CREATE_PROFILE
@@ -17,7 +19,7 @@ function receiveCreateProfile(profileData) {
 export const createProfile = (profileData)=>{
   return dispatch => {
     dispatch(requestCreateProfile());
-    const url = "http://localhost:3001/api/adduser";
+    const url = `${databaseURL}/adduser`;
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append('Accept','application/json');
@@ -61,7 +63,7 @@ function receiveQuestions(questions) {
 export const getQuestions = () => {
   return dispatch => {
     dispatch(requestQuestions());
-    const url = "http://localhost:3001/api/questions";
+    const url = `${databaseURL}/questions`;
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append('Accept','application/json');
@@ -102,7 +104,7 @@ function receiveChoices(choices) {
 export const getChoices = () => {
   return dispatch => {
     dispatch(requestChoices());
-    const url = "http://localhost:3001/api/data";
+    const url = `${databaseURL}/data`;
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append('Accept','application/json');
@@ -152,7 +154,7 @@ function receiveUpsertChoices(choices) {
 export const postChoices = (choices) => {
   return dispatch => {
     dispatch(requestChoices());
-    const url = "http://localhost:3001/api/data";
+    const url = `${databaseURL}/data`;
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append('Accept','application/json');
@@ -191,7 +193,7 @@ const receiveChecklist = () =>{
 export const getChecklist = () => {
   return dispatch => {
     dispatch(requestChecklist());
-    const url = "http://localhost:3001/api/data";
+    const url = `${databaseURL}/data`;
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append('Accept','application/json');
@@ -245,7 +247,7 @@ export const toggleUserChecklist = (id) => {
 export const getUserChecklist = () => {
   return dispatch => {
     dispatch(requestUserChecklist());
-    const url = "http://localhost:3001/api/userchecklist";
+    const url = `${databaseURL}/userchecklist`;
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append('Accept','application/json');
@@ -286,7 +288,7 @@ function receiveChecklistSteps(checklist_steps) {
 export const getChecklistSteps = () => {
   return dispatch => {
     dispatch(requestChecklistSteps());
-    const url = "http://localhost:3001/api/checkliststeps";
+    const url = `${databaseURL}/checkliststeps`;
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append('Accept','application/json');

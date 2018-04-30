@@ -40,8 +40,8 @@ class ChecklistItem extends Component {
     const { checklist } = this.props;
     return (
       <div className='label_wrap'>
-        <label className='my-checklist'>
-            <input type='checkbox' onClick={this.onItemClick} type='checkbox' checked={checklist.value} />
+        <label className='my-checklist' id="checkbox">
+            <input type='checkbox'  onClick={this.onItemClick} type='checkbox' checked={checklist.value} />
             <span>{checklist.checklistItem}</span>
             <button onClick={this.handleClick}  className="checklist_tip c_tip q1" >
               <i className="fas fa-question"></i>
