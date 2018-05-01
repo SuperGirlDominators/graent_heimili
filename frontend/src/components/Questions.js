@@ -125,14 +125,11 @@ class Questions extends Component {
     clickedItems.push(clickedItem);
   }
 
-  
-
   render() {
     const { questions } = this.props;
     let { choices } = this.props;
     choices = choices.filter(choice => choice.questionID === this.state.currentQuestion+1);
     const isAChoiceSelected = choices.some(choice => choice.value);
-    console.log(this.state.currentQuestion);
 
    const bannerImages = [
       {

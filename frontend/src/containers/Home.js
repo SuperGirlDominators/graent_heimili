@@ -5,9 +5,20 @@ import homeBanner from '../assets/images/home-banner.jpeg';
 
 
 class Home extends Component {
-  componentWillMount(){
-    document.body.id= "homepage";
+
+  getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length === 2) return parts.pop().split(";").shift();
   }
+  
+  componentWillMount() {
+    document.body.id= "homepage";
+    if (this.getCookie('green_home_token') != null) {
+      this.props.history.push('checklist');
+    }
+  }
+
   render() {
     return (
       <div>

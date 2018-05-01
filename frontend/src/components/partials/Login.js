@@ -40,6 +40,33 @@ class Login extends Component {
     }); 
   }
 
+  /**
+   * @param {string} url The session login endpoint.
+   * @param {string} idToken The ID token to post to backend.
+   * @param {?string} csrfToken The CSRF token to send to backend.
+   * @return {jQuery.jqXHR<string>} A jQuery promise that resolves on completion.
+   */
+  /*postIdTokenToSessionLogin(url, idToken, csrfToken) {
+    const headers = new Headers({
+      "Content-Type": "application/json",
+      'Accept':'application/json'}
+    );
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        idToken: idToken, 
+        // csrfToken: csrfToken
+      }),
+      headers,
+      credentials: 'include', // Don't forget to specify this if you need cookies
+    }).then(response => {
+      console.log('user created',response)
+    })
+    .catch( err => {
+      console.log("The error is ", err)
+    });
+  };*/
+
   componentWillMount(){
     // Initialize Firebase
     if (firebase.apps.length === 0) {
@@ -83,7 +110,6 @@ class Login extends Component {
     firebase.auth().signInWithPopup(provider)
       .then((result) => {
         console.log(result);
-        //const id_token = result.user.getAuthResponse().id_token;
         context.handleUserLoginResponse(result);
         this.setState({navigate:true})
       })

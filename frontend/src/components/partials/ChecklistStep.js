@@ -43,11 +43,11 @@ class ChecklistStep extends Component {
                     Skref {currentStep} af {totalSteps}
                 </p>
                 <div className="checklist_progress">
-                    <div class={"hl stepone " + (currentStep >= 1 ? 'complete ' : 'not_complete')}></div>
-                    <div class={"hl steptwo " + (currentStep >= 2 ? 'complete' : 'not_complete')}></div>
-                    <div class={"hl stepthree " + (currentStep >= 3 ? 'complete' : 'not_complete')}></div>
-                    <div class={"hl stepfour " + (currentStep >= 4 ? 'complete' : 'not_complete')}></div>
-                    <div class={"hl stepfive " + (currentStep >= 5 ? 'complete' : 'not_complete')}></div>
+                    <div className={"hl stepone " + (currentStep >= 1 ? 'complete ' : 'not_complete')}></div>
+                    <div className={"hl steptwo " + (currentStep >= 2 ? 'complete' : 'not_complete')}></div>
+                    <div className={"hl stepthree " + (currentStep >= 3 ? 'complete' : 'not_complete')}></div>
+                    <div className={"hl stepfour " + (currentStep >= 4 ? 'complete' : 'not_complete')}></div>
+                    <div className={"hl stepfive " + (currentStep >= 5 ? 'complete' : 'not_complete')}></div>
                 </div>
                 <h1 className="checklist_name">
                     { checklist_step && checklist_step.checklistName }

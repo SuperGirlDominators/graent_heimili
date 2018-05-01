@@ -12,10 +12,10 @@ class Question extends Component {
               Spurning {currentQuestion} af {totalQuestions}
           </p>
           <div className="quiz_progress">
-                    <div class={"hl questionone " + (currentQuestion >= 1 ? 'complete ' : 'not_complete')}></div>
-                    <div class={"hl questiontwo " + (currentQuestion >= 2 ? 'complete' : 'not_complete')}></div>
-                    <div class={"hl questionthree " + (currentQuestion >= 3 ? 'complete' : 'not_complete')}></div>
-                    <div class={"hl questionfour " + (currentQuestion >= 4 ? 'complete' : 'not_complete')}></div>
+                    <div className={"hl questionone " + (currentQuestion >= 1 ? 'complete ' : 'not_complete')}></div>
+                    <div className={"hl questiontwo " + (currentQuestion >= 2 ? 'complete' : 'not_complete')}></div>
+                    <div className={"hl questionthree " + (currentQuestion >= 3 ? 'complete' : 'not_complete')}></div>
+                    <div className={"hl questionfour " + (currentQuestion >= 4 ? 'complete' : 'not_complete')}></div>
                 </div>
           <h1 className="question_name">
               {question && question.question}{/*&&=  if statement equivalent*/}
