@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Router } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Home from './containers/Home';
 import Header from './containers/partials/Header';
 import Login from './components/partials/Login';

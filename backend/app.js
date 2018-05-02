@@ -12,7 +12,12 @@ const tokenCookieOptions = {
   // httpOnly: true,
   expires: 0,
   // secure: true
- }
+}
+
+process.on ( 'uncaughtException', (err) => {
+  console.log( err )
+})
+
 
 const serviceAccount = require('./key/graent-heimili-firebase-adminsdk-cn78s-c7a801171f.json');
 
@@ -32,25 +37,6 @@ app.use((req, res, next)=>{
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-// Create Database Connection
-// const dbConnection = mysql.createConnection({
-//   host     : '212.48.71.86',
-//   user     : 'judynjeru_user',
-//   password : ')KGB2r985$vZ',
-//   port     :3306,
-//   database : 'judynjeru_greenhome'
-// })
-
-//...........jawsDB connection..::::...//
-// const dbConnection = mysql.createConnection({
-//   host     : 'kcpgm0ka8vudfq76.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
-//   user     : 'qfsaae7nziqd5iub',
-//   password : 'n7lrum0xc1ei1fzo',
-//   port     :3306,
-//   database : 'rj5703edlgmbgefv'
-// })
-
-
 const dbConnection = mysql.createConnection({
   host     : 'localhost',
   user     : 'judy_local',
@@ -58,6 +44,15 @@ const dbConnection = mysql.createConnection({
   port     : 8889,
   database : 'green_home'
 })
+
+// const dbConnection = mysql.createConnection({
+//   host     : '212.48.71.86',
+//   user     : 'judynjeru_user',
+//   password : '=2R;+]hB$*{C',
+//   port     : 3306,
+//   database : 'judynjeru_greenhome'
+// })
+
 
 //Connect to Database
 dbConnection.connect((err) => {
@@ -69,79 +64,64 @@ dbConnection.connect((err) => {
 
 // Get questions from database
 app.get(APIPrefix + '/questions', (req, res) => {
-  let sql = 'SELECT * FROM questions';
-  dbConnection.query(sql, (err, result) => {
-    if(err) throw err;
-      res.send(result);
+  try {
+    let sql = 'SELECT * FROM questions';
+    dbConnection.query(sql, (err, result) => {
+      if(err) throw err;
+        return res.send(result); //always use return to send
     });
+  } catch(error) {
+      return res.send('sorry, something went wrong')
+  }
 });
 
 // Get checklist from database
 app.get(APIPrefix + '/checklist', (req, res) => {
-  let sql = 'SELECT * FROM checklist';
-  dbConnection.query(sql, (err, result) => {
-    if(err) throw err;
-      res.send(result);
+  try {
+    let sql = 'SELECT * FROM checklist';
+    dbConnection.query(sql, (err, result) => {
+      if(err) throw err;
+      return res.send(result);
     });
+  } catch(error) {
+      return res.send('sorry, something went wrong')
+  }
 });
 
 // Get choices from database
 app.get(APIPrefix + '/data', (req, res) => {
-  let sql = 'SELECT * FROM quiz_data';
-  dbConnection.query(sql, (err, result) => {
-    if(err) throw err;
-    res.send(result);
-    console.log(result);
-  });
+  try {
+    let sql = 'SELECT * FROM quiz_data';
+    dbConnection.query(sql, (err, result) => {
+      if(err) throw err;
+      return res.send(result);
+    });
+  } catch(error) {
+      return res.send('sorry, something went wrong')
+  }
 });
 
 // send choices from database
 app.post(APIPrefix + '/data', (req, res) => {
-  //res.send('not Implementd');
-  // get the cookie from the req
-  const token = req.cookies.green_home_token;
-  if (token) {
-    // idToken comes from the client app (shown above)
-    firebaseAdmin.auth().verifyIdToken(token)
-      .then(function(decodedToken) {
-        var uid = decodedToken.uid;
-        // console.log(uid);
-      }).catch(function(error) {
-        // Handle error
-        console.log(error);
-        res.send(error);
-      });
-  } else {
-    console.log("not found");
-    res.send("no token found");
-  }
+  try {
+    // get the cookie from the req
+    const token = req.cookies.green_home_token;
+    if (token) {
+      // idToken comes from the client app (shown above)
+      firebaseAdmin.auth().verifyIdToken(token)
+        .then(function(decodedToken) {
+          var uid = decodedToken.uid;
+        }).catch(function(error) {
+          return res.send(error);
+        });
+    } else {
+      console.log("not found");
+      return res.send("no token found");
+    }
   // we ask fireadminn is the cookie ok?
-
-});
-
-// send choices from database
-app.post(APIPrefix + '/data', (req, res) => {
-
-  //res.send('not Implementd');
-  // get the cookie from the req
-  const token = req.cookies.green_home_token;
-  if (token) {
-    // idToken comes from the client app (shown above)
-
-    firebaseAdmin.auth().verifyIdToken(token)
-      .then(function(decodedToken) {
-        var uid = decodedToken.uid;
-        // console.log(uid);
-      }).catch(function(error) {
-        // Handle error
-        console.log(error);
-        res.send(error);
-      });
-  } else {
-    console.log("not found");
-    res.send("no token found");
+  } catch(error) {
+      return res.send('sorry, something went wrong')
   }
-  // we ask fireadminn is the cookie ok?
 });
 
 function getFirebaseUser(uid, cb) {
@@ -161,8 +141,6 @@ function createFirebaseUser(user, cb) {
   firebaseAdmin.auth().createUser({
     email: user.email,
     emailVerified: user.emailVerified,
-    // phoneNumber: user.phoneNumber ,
-    // password: "secretPassword",
     displayName: user.displayName,
     photoURL: user.photoURL,
     disabled: false
@@ -192,109 +170,106 @@ function createCustomToken(uid, cb) {
 
 // create a new user in the database and return a access token cookie
 app.post(APIPrefix + '/adduser', (req, res) => {
-  // finding the user
-  getFirebaseUser(req.body.user.uid, (error, userData) => {
-    // if no user found create it ?
-    if(error) {
-      createFirebaseUser(req.body.user,(error, userRecord) => {
-        if (error) {
-          res.send(error);
-        } else {
-          createCustomToken(req.body.user.uid, (error, token) => {
-            if (error) {
-              res.send(error);
-            } else {
-              res.cookie('green_home_token', token, tokenCookieOptions);
-              res.send("token returned! yey!");
-            }
-          });
-        }
-      });
-    } else {
-      // if user is found give user an access token
-      /*createCustomToken(req.userData.uid, (error, token) => {
-        if (error) {
-          res.send(error);
-        } else {
-          res.cookie('green_home_token', token, tokenCookieOptions);
-          res.send("token returned! yey!");
-        }
-      });*/
-      // console.log("STARTING REQUEST BODY")
-      // console.log(req.body);
-      // console.log("returning cookie");
-      res.cookie('green_home_token', req.body.realToken, tokenCookieOptions);
-      // res.send("token returned! yey!");
-      storeUserInDatabase(req.body.user.uid, req.body.user.displayName, req.body.user.photoURL, res );
-    }
-  });
+  try {
+    // finding the user
+    getFirebaseUser(req.body.user.uid, (error, userData) => {
+      // if no user found create it ?
+      if(error) {
+        createFirebaseUser(req.body.user,(error, userRecord) => {
+          if (error) {
+            return res.send(error);
+          } else {
+            createCustomToken(req.body.user.uid, (error, token) => {
+              if (error) {
+                return res.send(error);
+              } else {
+                res.cookie('green_home_token', token, tokenCookieOptions);
+                return res.send("token returned! yey!");
+              }
+            });
+          }
+        });
+      } else {
+        res.cookie('green_home_token', req.body.realToken, tokenCookieOptions);
+        // res.send("token returned! yey!");
+        storeUserInDatabase(req.body.user.uid, req.body.user.displayName, req.body.user.photoURL, res );
+      }
+    });
+  } catch(error) {
+      return res.send('sorry, something went wrong')
+  }
 });
 
 function storeUserInDatabase(userId, username, picture, res) {
   let sql = `INSERT INTO user_info (userID, username, userImage) VALUES ('${userId}', '${username}', '${picture}')`;
   dbConnection.query(sql, (err, result) => {
     if(err) console.log( err );
-    res.send(result);
+    return res.send(result);
   });
 }
 
-// gives the calling user an authentication token
-/*app.post(APIPrefix + '/authenticate', (req, res) => {
-
-});*/
 
 // Post choices from database
 app.post(APIPrefix + '/userchoices', (req, res) => {
-  const data = req.body;
-  let values = [];
-  req.body.unSelectedChoices.map((choice)=>{
-    //values += choice.choiceID + ", ";
-    values.push(choice.choiceID);
-    let sql = `INSERT INTO user_checklist (userID, choiceID, choice, checklistID, checklistStep, checklistItem, checklistTip ) VALUES ('${data.userID}', '${choice.choiceID}', '${choice.choice}', '${choice.checklistID}', '${choice.checklistStep}', '${choice.checklistItem}', '${choice.checklistTip}')`;
-    let sqlSelect = `SELECT * FROM user_checklist`;
-    let shouldInsert = true;
-    dbConnection.query(sqlSelect, (err, result) => {
-      if(err) throw err;
-      result.forEach ((row) => {
-        if( row.userID === data.userID && row.choiceID === row.choiceID) {
-          shouldInsert = false;
+  try {
+    const data = req.body;
+    let values = [];
+    req.body.unSelectedChoices.map((choice)=>{
+      values.push(choice.choiceID);
+      let sql = `INSERT INTO user_checklist (userID, choiceID, choice, checklistID, checklistStep, checklistItem, checklistTip ) VALUES ('${data.userID}', '${choice.choiceID}', '${choice.choice}', '${choice.checklistID}', '${choice.checklistStep}', '${choice.checklistItem}', '${choice.checklistTip}')`;
+      let sqlSelect = `SELECT * FROM user_checklist`;
+      let shouldInsert = true;
+      dbConnection.query(sqlSelect, (err, result) => {
+        if(err) throw err;
+        result.forEach ((row) => {
+          if( row.userID === data.userID && row.choiceID === row.choiceID) {
+            shouldInsert = false;
+          }
+        });
+        if (shouldInsert) {
+          dbConnection.query(sql, (err, result) => {
+            if(err) throw err;
+          });
         }
       });
-      if (shouldInsert) {
-        dbConnection.query(sql, (err, result) => {
-          if(err) throw err;
-          // console.log(result);
-          // res.send(result);
-          // values = values.slice(0, -3);
-        });
-      }
     });
-  });
 
-  let valuesStr = values.join(', ');
-  sql = `SELECT * FROM quiz_data WHERE choiceID IN (${valuesStr})`;
-  dbConnection.query(sql, (err, result) => {
-    if(err) throw err;
-    res.send(result);
-  });
+    let valuesStr = values.join(', ');
+    sql = `SELECT * FROM quiz_data WHERE choiceID IN (${valuesStr})`;
+    dbConnection.query(sql, (err, result) => {
+      if(err) throw err;
+      return res.send(result);
+    });
+  } catch(error) {
+      return res.send('sorry, something went wrong')
+  }
+  
 });
 
 // Get user checklist from database
 app.get(APIPrefix + '/userchecklist', (req, res) => {
-  let sql = 'SELECT * FROM user_checklist';
-  dbConnection.query(sql, (err, result) => {
-    if(err) throw err;
-    res.send(result);
-  });
+  try {
+    let sql = 'SELECT * FROM user_checklist';
+    dbConnection.query(sql, (err, result) => {
+      if(err) throw err;
+      return res.send(result);
+    });
+  } catch(error) {
+      return res.send('sorry, something went wrong')
+  }
 });
 
 // Get checklist steps from database
 app.get(APIPrefix + '/checkliststeps', (req, res) => {
-  let sql = 'SELECT * FROM checklist_steps';
-  dbConnection.query(sql, (err, result) => {
-    if(err) throw err;
-      res.send(result);
+  try {
+    let sql = 'SELECT * FROM checklist_steps';
+    dbConnection.query(sql, (err, result) => {
+      if(err) throw err;
+      return res.send(result);
     });
+  } catch(error) {
+      return res.send('sorry, something went wrong')
+  } 
 });
 
 

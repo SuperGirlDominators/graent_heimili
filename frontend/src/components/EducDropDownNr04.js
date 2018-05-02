@@ -29,7 +29,6 @@ import hagkaup from '../assets/images/hagkaup.jpg';
 import bonus from '../assets/images/bonus.jpg';
 
 import kronan from '../assets/images/kronan.jpg';
-import vidir from '../assets/images/vidir.jpg';
 import gamur from '../assets/images/gamur.jpg';
 
 import $ from 'jquery';
@@ -47,9 +46,9 @@ import Waypoint from 'react-waypoint';
             <div>
             <div className="container">
                 <div className="row">
-                    <EducationPortrait image={mena} name={"MENA.IS"} text={"<p><strong>Mena</strong> býður upp á snyrtivörur og hreingerningarvörur ásamt ýmsu fyrir eldhúsið.</p>"} />                    
-                    <EducationPortrait image={mistur} name={"MISTUR.IS"} text={"​<p><strong>Mistur</strong> býður upp á fjölnotavörur fyrir fólk á ferðinni, í eldhúsið og baðherbergið, ásamt snyrtivörum.</p>"} />
-                    <EducationPortrait image={graenviska} name={"GRAENVISKA.IS"} text={"<p><strong>Græn viska</strong> býður upp á vörur fyrir heimilið ásamt snyrtivörum.</p>"} />
+                    <EducationPortrait image={mena} name={"MENA"} text={"<p><strong>Mena</strong> býður upp á snyrtivörur og hreingerningarvörur ásamt ýmsu fyrir eldhúsið.</p>"} />                    
+                    <EducationPortrait image={mistur} name={"MISTUR"} text={"​<p><strong>Mistur</strong> býður upp á fjölnotavörur fyrir fólk á ferðinni, í eldhúsið og baðherbergið, ásamt snyrtivörum.</p>"} />
+                    <EducationPortrait image={graenviska} name={"GRÆN VISKA"} text={"<p><strong>Græn viska</strong> býður upp á vörur fyrir heimilið ásamt snyrtivörum.</p>"} />
                 </div>  	
             </div>
 
@@ -71,9 +70,9 @@ import Waypoint from 'react-waypoint';
 
             <div className="container">    
                 <div className="row"> 
-                    <EducationPortrait image={kolaportid} name={"KOLAPORTIÐ"} text={"<p>Í<strong> Kolaportinu</strong> er hægt er að kaupa kartöflur í lausu hjá þeim.</p>"} />                    
-                    <EducationPortrait image={klaran} name={"KLARAN.IS"} text={"​<p>Verslunin <strong>Klaran</strong>býður upp á ýmsar umhverfisvænar vörur.</p>"} />
-                    <EducationPortrait image={sostrene} name={"SOSTRENE GRENE"} text={"<p>Verslunin </strong>Sostrene Grene</strong>býður upp á te í umbúðalausu.</p>"} />
+                    <EducationPortrait image={kolaportid} name={"KOLAPORTIÐ"} text={"<p>Í<strong> Kolaportinu</strong> er hægt er að kaupa kartöflur í lausu hjá þeim. Þar er einnig hægt að kaupa notuð föt og aðrar nytjavörur</p>"} />                    
+                    <EducationPortrait image={klaran} name={"KLARAN"} text={"​<p>Verslunin <strong>Klaran</strong> býður upp á ýmsar umhverfisvænar vörur.</p>"} />
+                    <EducationPortrait image={sostrene} name={"SOSTRENE GRENE"} text={"<p>Verslunin<strong> Sostrene Grene</strong> býður upp á te í umbúðalausu.</p>"} />
                 </div>  	
             </div>  
 
@@ -85,11 +84,10 @@ import Waypoint from 'react-waypoint';
                 </div>  	
             </div>          
         
-            <div className="container">
+            <div className="container linkStyle">
                 <div className="row">
-                    <EducationPortrait image={kronan} name={"KRÓNAN"} text={""} />                    
-                    <EducationPortrait image={vidir} name={"Víðir"} text={"​"} />
-                    <EducationPortrait image={gamur} name={"GAMUR.IS"} text={"Moltutunna - https://www.gamur.is/vorur-og-%C3%BEjonusta/matussi-moltutunna-310l/"} />   
+                    <EducationPortrait image={kronan} name={"KRÓNAN"} text={"<p><strong>Í verslunum Krónunnar</strong> er boðið upp á þroskað grænmeti, ávexti, útlitsgallaðar vörur og vörur á síðasta söludegi á lækkuðu verði í stað þess að vörum sé fargað.</p>"} />                    
+                    <EducationPortrait image={gamur} name={"GAMUR"} text={'<p>Þú getur keypt þér <a href="https://www.gamur.is/vorur-og-%C3%BEjonusta/matussi-moltutunna-310l/" target="_blank">moltutunnu</a> hjá Íslenska Gámafélaginu </p>'} />   
                 </div>  	
             </div> 
 
