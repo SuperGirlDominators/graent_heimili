@@ -3,22 +3,22 @@ import firebase from 'firebase';
 
 const baseUrl = 'http://localhost:3003/api';
 
-function requestCreateProfile() {
+function requestSessionLogin() {
   return {
-    type: actionTypes.REQUEST_CREATE_PROFILE
+    type: actionTypes.REQUEST_SESSION_LOGIN
   };
 }
 
-function receiveCreateProfile(profileData) {
+function receiveSessionLogin(profileData) {
   return {
-    type: actionTypes.RECEIVE_CREATE_PROFILE,
+    type: actionTypes.RECEIVE_SESSION_LOGIN,
     profileData
   };
 }
 
-export const createProfile = (profileData) =>{
+export const sessionLogin = (profileData) =>{
   return dispatch => {
-    dispatch(requestCreateProfile());
+    dispatch(requestSessionLogin());
     const url = `${baseUrl}/sessionLogin`;
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
@@ -37,7 +37,7 @@ export const createProfile = (profileData) =>{
         credentials: 'include', // Don't forget to specify this if you need cookies
       }).then(response => {
         console.log('user created')
-        dispatch(receiveCreateProfile(profileData));
+        dispatch(receiveSessionLogin(profileData));
       })
       .catch( err => {
         console.log("The error is ", err)
@@ -141,17 +141,31 @@ export const toggleChoice = (id) => {
   }
 }
 
-export const postChoices = (choices) => {
+function requestUpsertChoices() {
+  return {
+    type: actionTypes.REQUEST_UPSERT_CHOICES
+  };
+}
+
+function receiveUpsertChoices(choices) {
+  return {
+    type: actionTypes.RECEIVE_UPSERT_CHOICES,
+    choices
+  };
+}
+
+export const postChoices = (choices, cb) => {
   return dispatch => {
+    const body = { unSelectedChoices: choices };
     dispatch(requestChoices());
-    const url = `${baseUrl}/data`;
+    const url = `${baseUrl}/questionChoices`;
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append('Accept','application/json');
     fetch(url, {
       headers: headers,
       method: "POST",
-      body: JSON.stringify(choices),
+      body: JSON.stringify(body),
       credentials: 'include', // Don't forget to specify this if you need cookies
     })
     .then(response =>
@@ -160,10 +174,12 @@ export const postChoices = (choices) => {
     .then(response => {
       console.log(response);
       dispatch(receiveChoices([]));
+      cb();
     })
     .catch( err => {
       console.log("The error is ", err);
-      receiveChoices([]);
+      dispatch(receiveChoices([]));
+      cb(err);
     });
   }
 }

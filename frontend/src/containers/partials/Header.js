@@ -16,6 +16,7 @@ class Header extends Component {
     };
     this.onStatusClick = this.onStatusClick.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   onStatusClick() {
@@ -34,10 +35,25 @@ class Header extends Component {
   }
 
   handleLogout() {
-    firebase.auth().signOut().then(function() {
+    const context = this;
+    /* firebase.auth().signOut().then(function() {
       console.log('Signed Out');
     }, function(error) {
       console.error('Sign Out Error', error);
+    });*/ 
+    fetch("http://localhost:3003/api/logout", {
+      method: "GET",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        'Accept':'application/json'
+      }),
+      credentials: 'include', // Don't forget to specify this if you need cookies
+    }).then(response => {
+      console.log(response);
+      context.props.history.push('/');
+    })
+    .catch(err => {
+      console.log("The error is ", err)
     });
   }
 

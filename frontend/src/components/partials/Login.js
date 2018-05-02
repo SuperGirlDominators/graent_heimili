@@ -83,7 +83,7 @@ class Login extends Component {
   }
 
   handleUserLoginResponse(result) {
-    this.props.actions.createProfile(result);
+    this.props.actions.sessionLogin(result);
   }
 
   handleFacebookLogin() {
@@ -137,14 +137,26 @@ class Login extends Component {
   }
 
   handleLogout() {
-    firebase.auth().signOut().then(function() {
+    /*firebase.auth().signOut().then(function() {
       console.log('Signed Out');
     }, function(error) {
       console.error('Sign Out Error', error);
+    });*/
+    fetch("http://localhost:3003/api/logout", {
+      method: "GET",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        'Accept':'application/json'
+      }),
+      credentials: 'include', // Don't forget to specify this if you need cookies
+    }).then(response => {
+      console.log(response);
+      this.props.history.push('/');
+    })
+    .catch(err => {
+      console.log("The error is ", err)
     });
   }
-
-
 
   render() {
   

@@ -63,16 +63,16 @@ class Questions extends Component {
       // console.log(firebase.auth().currentUser)
       this.setState({login:true}); 
     }
-    this.props.actions.postChoices(this.props.choices);
     const choicesValue = this.props.choices;
     const unSelectedChoices = choicesValue.filter((choice)=> {
-      if(choice.value) {
-        return false;
-      } else {
-        return true;
+      return !choice.value;
+    });
+    this.props.actions.postChoices(unSelectedChoices, err => {
+      if (!err) {
+        this.props.history.push('/loader')
       }
     });
-    this.postChecklist(unSelectedChoices);
+    // this.postChecklist(unSelectedChoices);
   }
 
   postChecklist(unSelectedChoices) {
@@ -101,8 +101,6 @@ class Questions extends Component {
     } else {
         return false;
     }
-      // this.props.profileData.user ? this.props.history.push('/loader') : false;
-
       // this.props.profileData.user ? this.props.history.push('/checklist') : false;
     })
     .catch( err => {

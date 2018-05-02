@@ -19,6 +19,43 @@ process.on ( 'uncaughtException', (err) => {
 })
 
 
+ /**
+ * Attaches a CSRF token to the request.
+ * @param {string} url The URL to check.
+ * @param {string} cookie The CSRF token name.
+ * @param {string} value The CSRF token value to save.
+ * @return {function} The middleware function to run.
+ */
+function attachCsrfToken(url, cookie, value) {
+  return function(req, res, next) {
+    if (req.url == url) {
+      res.cookie(cookie, value);
+    }
+    next();
+  }
+}
+
+/**
+ * Checks if a user is signed in and if so, redirects to profile page.
+ * @param {string} url The URL to check if signed in.
+ * @return {function} The middleware function to run.
+ */
+function checkIfSignedIn(url) {
+  return function(req, res, next) {
+    if (req.url == url) {
+      var sessionCookie = req.cookies.session || '';
+      // User already logged in. Redirect to profile page.
+      admin.auth().verifySessionCookie(sessionCookie).then(function(decodedClaims) {
+        res.redirect('/profile');
+      }).catch(function(error) {
+        next();
+      });
+    } else {
+      next();
+    }
+  }
+}
+
 const serviceAccount = require('./key/graent-heimili-firebase-adminsdk-cn78s-c7a801171f.json');
 
 firebaseAdmin.initializeApp({
@@ -36,23 +73,15 @@ app.use((req, res, next)=>{
 
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(attachCsrfToken('/', 'csrfToken', (Math.random()* 100000000000000000).toString()));
 
 const dbConnection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'judy_local',
+  user     : 'heidrun_local',
   password : '',
-  port     : 8889,
+  port     :8889,
   database : 'green_home'
 })
-
-// const dbConnection = mysql.createConnection({
-//   host     : '212.48.71.86',
-//   user     : 'judynjeru_user',
-//   password : '=2R;+]hB$*{C',
-//   port     : 3306,
-//   database : 'judynjeru_greenhome'
-// })
-
 
 //Connect to Database
 dbConnection.connect((err) => {
@@ -123,7 +152,7 @@ app.post(APIPrefix + '/data', (req, res) => {
       return res.send('sorry, something went wrong')
   }
 });
-
+/*
 function getFirebaseUser(uid, cb) {
   firebaseAdmin.auth().getUser(uid)
   .then(function(userRecord) {
@@ -155,7 +184,8 @@ function createFirebaseUser(user, cb) {
     cb(error);
   });
 }
-
+*/
+/*
 function createCustomToken(uid, cb) {
   firebaseAdmin.auth().createCustomToken(uid)
     .then(token => {
@@ -167,8 +197,86 @@ function createCustomToken(uid, cb) {
       cb(error);
     });
 }
+*/
+
+/** Get profile endpoint. */
+app.get('/profile', function (req, res) {
+  // Get session cookie.
+  var sessionCookie = req.cookies.session || '';
+  // Get the session cookie and verify it. In this case, we are verifying if the
+  // Firebase session was revoked, user deleted/disabled, etc.
+  admin.auth().verifySessionCookie(sessionCookie, true /** check if revoked. */)
+    .then(function(decodedClaims) {
+      // Serve content for signed in user.
+      // return serveContentForUser('/profile', req, res, decodedClaims);
+    }).catch(function(error) {
+      // Force user to login.
+      // res.redirect('/');
+    });
+});
+
+/** Session login endpoint. */
+app.post('/sessionLogin', function (req, res) {
+  // Get ID token and CSRF token.
+  var idToken = req.body.idToken.toString();
+  var csrfToken = req.body.csrfToken.toString();
+  
+  // Guard against CSRF attacks.
+  if (!req.cookies || csrfToken !== req.cookies.csrfToken) {
+    res.status(401).send('UNAUTHORIZED REQUEST!');
+    return;
+  }
+  // Set session expiration to 5 days.
+  var expiresIn = 60 * 60 * 24 * 5 * 1000;
+  // Create the session cookie. This will also verify the ID token in the process.
+  // The session cookie will have the same claims as the ID token.
+  // We could also choose to enforce that the ID token auth_time is recent.
+  admin.auth().verifyIdToken(idToken).then(function(decodedClaims) {
+    // In this case, we are enforcing that the user signed in in the last 5 minutes.
+    if (new Date().getTime() / 1000 - decodedClaims.auth_time < 5 * 60) {
+      return admin.auth().createSessionCookie(idToken, {expiresIn: expiresIn});
+    }
+    throw new Error('UNAUTHORIZED REQUEST!');
+  })
+  .then(function(sessionCookie) {
+    // Note httpOnly cookie will not be accessible from javascript.
+    // secure flag should be set to true in production.
+    var options = {maxAge: expiresIn, httpOnly: true, secure: false /** to test in localhost */};
+    res.cookie('session', sessionCookie, options);
+    res.end(JSON.stringify({status: 'success'}));
+  })
+  .catch(function(error) {
+    res.status(401).send('UNAUTHORIZED REQUEST!');
+  });
+});
+
+/** User signout endpoint. */
+app.get('/logout', function (req, res) {
+  // Clear cookie.
+  var sessionCookie = req.cookies.session || '';
+  res.clearCookie('session');
+  // Revoke session too. Note this will revoke all user sessions.
+  if (sessionCookie) {
+    admin.auth().verifySessionCookie(sessionCookie, true).then(function(decodedClaims) {
+      return admin.auth().revokeRefreshTokens(decodedClaims.sub);
+    })
+    .then(function() {
+      // Redirect to login page on success.
+      res.redirect('/');
+    })
+    .catch(function() {
+      // Redirect to login page on error.
+      res.redirect('/');
+    });
+  } else {
+    // Redirect to login page when no session cookie available.
+    res.redirect('/');
+  }
+});
 
 // create a new user in the database and return a access token cookie
+/*
+<<<<<<< Updated upstream
 app.post(APIPrefix + '/adduser', (req, res) => {
   try {
     // finding the user
@@ -198,8 +306,47 @@ app.post(APIPrefix + '/adduser', (req, res) => {
   } catch(error) {
       return res.send('sorry, something went wrong')
   }
+=======*/
+/*app.post(APIPrefix + '/adduser', (req, res) => {
+  // finding the user
+  getFirebaseUser(req.body.user.uid, (error, userData) => {
+    // if no user found create it ?
+    if(error) {
+      createFirebaseUser(req.body.user,(error, userRecord) => {
+        if (error) {
+          res.send(error);
+        } else {
+          createCustomToken(req.body.user.uid, (error, token) => {
+            if (error) {
+              res.send(error);
+            } else {
+              res.cookie('green_home_token', token, tokenCookieOptions);
+              res.send("token returned! yey!");
+            }
+          });
+        }
+      });
+    } else {
+      // if user is found give user an access token
+      /*createCustomToken(req.userData.uid, (error, token) => {
+        if (error) {
+          res.send(error);
+        } else {
+          res.cookie('green_home_token', token, tokenCookieOptions);
+          res.send("token returned! yey!");
+        }
+      });*/
+      // console.log("STARTING REQUEST BODY")
+      // console.log(req.body);
+      // console.log("returning cookie");
+      /*res.cookie('green_home_token', req.body.realToken, tokenCookieOptions);
+      // res.send("token returned! yey!");
+      storeUserInDatabase(req.body.user.uid, req.body.user.displayName, req.body.user.photoURL, res );
+    }
+  });
+>>>>>>> Stashed changes
 });
-
+*/
 function storeUserInDatabase(userId, username, picture, res) {
   let sql = `INSERT INTO user_info (userID, username, userImage) VALUES ('${userId}', '${username}', '${picture}')`;
   dbConnection.query(sql, (err, result) => {
@@ -271,9 +418,6 @@ app.get(APIPrefix + '/checkliststeps', (req, res) => {
       return res.send('sorry, something went wrong')
   } 
 });
-
-
-
 
 
 app.listen(port, ()=>{

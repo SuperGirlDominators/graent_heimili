@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import Home from './containers/Home';
 import Header from './containers/partials/Header';
 import Login from './components/partials/Login';
+import Loader from './components/Loader';
 import Questions from './components/Questions';
 import Checklist from './components/Checklist';
 import StepAchievement from './containers/StepAchievement';
@@ -49,9 +50,10 @@ class App extends Component {
             <div className={maskClass} style={imageStyle}></div>
         </div>
         <Route path="/login" component={Login} />
-        <Header toggleMenu={this.toggleMenu} menuOpen={this.state.menuOpen}/>
+        <Header toggleMenu={this.toggleMenu} menuOpen={this.state.menuOpen} history={this.props.history}/>
         <Route path="/" exact component={Home}/>
         <Route path="/questions" component={Questions} />
+        <Route path="/loader" component={Loader} />
         <Route path="/checklist" component={Checklist} />
         <Route path="/stepcomplete" component={StepAchievement} />
         <Route path="/about-game" component={AboutGame} />
