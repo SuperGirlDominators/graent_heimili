@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import '../css/Checklist.css';
 import whiteMask from '../assets/images/white_mask.png';
 import ChecklistItem from './partials/ChecklistItem';
@@ -64,7 +63,7 @@ class Checklist extends Component {
     }
 
 
-    if(currStep.currentStep === this.props.checklist_steps.length) {
+    if(currStep.currentStep === this.props.checklist_steps.length + 1 ) {
       this.handleSubmit();
     } 
     else {
@@ -76,59 +75,50 @@ class Checklist extends Component {
 
   handleSubmit() {
     const checklistValue = this.props.userchecklist;
-  }
-
-  onClick(e) {
-    let  clickedItems= [];
-      // e.target.value;
-      let clickedItem = e.target.value;
-      // console.log(e.target.value);
-      clickedItems.push(clickedItem);
-      console.log(clickedItems);
+    console.log(checklistValue)
   }
 
   render() {
     const { checklist_steps } = this.props;
     let { userchecklist } = this.props;
 
-    userchecklist = userchecklist.filter(checklist => checklist.checklistStep === this.props.current_step+1)
+    userchecklist = userchecklist.filter(checklist => checklist.checklistStep === this.props.current_step + 1)
     .filter(checklist => !!checklist.checklistItem); 
 
     const isAChecklistSelected = userchecklist.every(checklist => checklist.value);
     return (
-        <div>
-      
-            <div className="container">
-                <div className="row">
-                  <div className="luminance-mask">
-                    <img className="target luminance-target" src={whiteMask} alt="banner mask"></img>
+      <div>
+        <div className="container">
+            <div className="row">
+              <div className="luminance-mask">
+                <img className="target luminance-target" src={whiteMask} alt="banner mask"></img>
+              </div>
+                <div className="col-12 col-sm-12 col-md-12 checklist_content">
+                  <ChecklistStep
+                    currentStep={this.props.current_step}
+                    totalSteps={checklist_steps.length}
+                    checklist_step = {checklist_steps[this.props.current_step]}
+                  />
+                  <button className="view_up"><i className="up"></i></button>
+                  <div className="col-12 col-sm-12 col-md-7 checklistItems"> 
+                    {
+                      userchecklist.map((checklist, i) =>
+                        <ChecklistItem key={i} checklist={checklist} onToggle={this.props.actions.toggleUserChecklist}/>
+                      )
+                    }       
                   </div>
-                    <div className="col-md-12 checklist_content">
-                      <ChecklistStep
-                        currentStep={this.props.current_step}
-                        totalSteps={checklist_steps.length}
-                        checklist_step = {checklist_steps[this.props.current_step]}
-                      />
-                      <button className="view_up"><i className="up"></i></button>
-                      <div className="col-md-8 checklistItems"> 
-                        {
-                          userchecklist.map((checklist, i) =>
-                            <ChecklistItem key={i} checklist={checklist} onToggle={this.props.actions.toggleUserChecklist}/>
-                          )
-                        }       
-                      </div>
-                      <button className="view_more"><i className="down"></i></button>
-                    </div>
+                  <button className="view_more"><i className="down"></i></button>
                 </div>
             </div>
-            { isAChecklistSelected &&
-              <a className="play-button-outer" href={(this.props.current_step === this.props.userchecklist.length-1 ) ? "#":"#"} style={{ display: "block" }} id="next_question" onClick={this.getNextStep}>
-                <div className="next_checklist">
-                  <p className="button_text">NÆSTA SKREF</p>
-                </div>
-              </a>
-            }
         </div>
+        { isAChecklistSelected &&
+          <a className="play-button-outer" href={(this.props.current_step === this.props.userchecklist.length-1 ) ? "# ":"# "} style={{ display: "block" }} id="next_question" onClick={this.getNextStep}>
+            <div className="next_checklist">
+              <p className="button_text">NÆSTA SKREF</p>
+            </div>
+          </a>
+        }
+      </div>
     );
   }
 }

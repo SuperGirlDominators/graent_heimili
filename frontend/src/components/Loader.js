@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import '../css/Loader.css';
 
 
@@ -20,12 +19,12 @@ class Loader extends Component {
 
     render() {
         return (
-            <div>
-                <div class="loader">
-                    <div class="square"></div>
-                    <div class="square clear"></div>
-                    <div class="square"></div>
-                    <div class="square last"></div>
+            <div className="loading_content">
+                <div className="loader">
+                    <div className="square"></div>
+                    <div className="square clear"></div>
+                    <div className="square"></div>
+                    <div className="square last"></div>
                 </div>
                 <h1 id="loading_checklist">Tékklisti í vinnslu</h1>
             </div>

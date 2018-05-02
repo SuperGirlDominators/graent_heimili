@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import { Panel } from 'react-bootstrap';
-import AboutPortrait from './AboutPortrait';
-import homeBanner from '../assets/images/home-banner.jpeg';
-import whiteMask from '../assets/images/white_mask.png';
 import '../css/AboutUs.css';
 import '../css/EducationPage.css';
 import $ from 'jquery';
-import Waypoint from 'react-waypoint';
 export default class Education extends Component {
     
 componentDidMount() {
@@ -30,11 +25,11 @@ componentDidMount() {
                 <div className="col-md-12 dropdown2">
                     <button className="dropbtn">Ekkert valið</button>
                 <div className="dropdown2-content">
-                    <a href="#">Hvað verður um efnið sem þú flokkar?</a>
+                    <a href="# ">Hvað verður um efnið sem þú flokkar?</a>
                     <a href="CleaningRecipes.js">Uppskriftir að hreinsiefnum</a>
-                    <a href="#">Uppskriftir að snyrtivörum</a>
-                    <a href="#">Hvar þú getur keypt sniðugar umhverfisvænar vörur</a>
-                    <a href="#">Mikilvægar og góðar upplýsingar</a>
+                    <a href="# ">Uppskriftir að snyrtivörum</a>
+                    <a href="# ">Hvar þú getur keypt sniðugar umhverfisvænar vörur</a>
+                    <a href="# ">Mikilvægar og góðar upplýsingar</a>
                 </div>
                 </div>
             </div>

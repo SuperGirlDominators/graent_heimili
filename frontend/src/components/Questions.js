@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import '../css/Question.css';
 import '../css/Home.css';
 import Login from './partials/Login';
-import whiteMask from '../assets/images/home-banner.jpeg';
 import Question from './partials/Question';
-import Checklist from './Checklist';
 import Choice from './partials/Choice';
 import $ from 'jquery';
 import * as actions from '../actions/actions';
@@ -32,10 +29,6 @@ class Questions extends Component {
     this.props.actions.getChecklist();
   }
 
-  componentDidUpdate() {
-
-  }
-
   componentWillMount(){
     document.body.id= "quiz_page";
     $(document).ready(function(){
@@ -52,10 +45,6 @@ class Questions extends Component {
         $(this).hide();
       });
     });
-  }
-
-  componentDidUpdate(){
-  
   }
 
   getNextQuestion() {
@@ -107,7 +96,12 @@ class Questions extends Component {
       // this.props.history.push('/loader')
     })
     .then(response => {
-      this.props.profileData.user ? this.props.history.push('/loader') : false;
+      if (this.props.profileData.user) {
+        this.props.history.push('/loader')
+    } else {
+        return false;
+    }
+      // this.props.profileData.user ? this.props.history.push('/loader') : false;
 
       // this.props.profileData.user ? this.props.history.push('/checklist') : false;
     })
@@ -129,6 +123,7 @@ class Questions extends Component {
 
   render() {
     const { questions } = this.props;
+    console.log(questions)
     let { choices } = this.props;
     choices = choices.filter(choice => choice.questionID === this.state.currentQuestion+1);
     const isAChoiceSelected = choices.some(choice => choice.value);
@@ -137,26 +132,22 @@ class Questions extends Component {
    const bannerImages = [
       {
         type: "Image_one",
-        image: require("../assets/images/home-banner.jpeg")
+        image: require("../assets/images/bottles.jpg")
       },
       {
         type: "Image_two",
-        image: require("../assets/images/recycle.jpg")
+        image: require("../assets/images/cleaning.jpg")
       },
       {
         type: "Image_three",
-        image: require("../assets/images/home-banner.jpeg")
+        image: require("../assets/images/hygiene.jpg")
       },
       {
         type: "Image_four",
-        image: require("../assets/images/home-banner.jpeg")
+        image: require("../assets/images/environment.jpg")
       },
     ];
 
-    if(this.state.currentQuestion === 0) {
-      // white_curved_mask
-      $('.target').addClass('loled'); 
-    }
     return (
       <div>
         <div className="row start-button">
@@ -185,10 +176,19 @@ class Questions extends Component {
               }
             </div>
             <button className="view_more"><i className="down"></i></button>
+
+              <div className="mb_quiz_tip">
+            <Question
+              question={questions[this.state.currentQuestion]}
+            />
           </div>
+          </div>
+
+        
+
         </div>
           { isAChoiceSelected &&
-            <a className="play-button-outer" href={(this.state.currentQuestion === this.props.questions.length-1 ) && (!this.state.login) ? "#login_popup": "#" } style={{ display: "block" }} id="next_question" onClick={this.getNextQuestion}>
+            <a className="play-button-outer" href={(this.state.currentQuestion === this.props.questions.length-1 ) && (!this.state.login) ? "#login_popup": "# " } style={{ display: "block" }} id="next_question" onClick={this.getNextQuestion}>
               <div className="play-button">
                 <p className="button_text">áfram</p>
               </div>

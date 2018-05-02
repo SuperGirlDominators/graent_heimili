@@ -24,7 +24,7 @@ export const createProfile = (profileData)=>{
     headers.append("Content-Type", "application/json");
     headers.append('Accept','application/json');
 
-    firebase.auth().currentUser.getToken().then((idToken)=>{
+    firebase.auth().currentUser.getIdToken().then((idToken)=>{
       profileData.realToken = idToken;
       console.log(profileData)
       fetch(url, {
@@ -136,19 +136,6 @@ export const toggleChoice = (id) => {
   return dispatch => {
     dispatch(toggleChoiceAction(id));
   }
-}
-
-function requestUpsertChoices() {
-  return {
-    type: actionTypes.REQUEST_UPSERT_CHOICES
-  };
-}
-
-function receiveUpsertChoices(choices) {
-  return {
-    type: actionTypes.RECEIVE_UPSERT_CHOICES,
-    choices
-  };
 }
 
 export const postChoices = (choices) => {
