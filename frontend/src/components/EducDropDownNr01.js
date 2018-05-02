@@ -33,7 +33,7 @@ import Waypoint from 'react-waypoint';
             <div>
             <div className="container">
                 <div className="row">
-                    <EducationPortrait image={pappi} name={"PAPPI"} text={"<p>Efnið er flokkað vélrænt í móttöku- og flokkunarstöð <strong>SORPU</strong> í Gufunesi til að aðskilja bylgjupappa frá sléttum pappa og pappír. Efnið er pressað og baggað og síðan flutt til Svíþjóðar til frekari flokkunar og endurvinnslu.</p><p>Úr endurunnum <strong>pappír og pappa</strong> er t.d. framleiddur salernispappír, eldhúspappír, dagblaðapappír og karton sem notað er til að búa til nýjar umbúðir. Úr endurunnum bylgjupappa er framleiddur nýr bylgjupappi.</p>"} />                     
+                    <EducationPortrait image={pappi} name={"PAPPI"} text={"<p>Efnið er flokkað vélrænt í móttöku- og flokkunarstöð <strong>SORPU</strong> í Gufunesi til að aðskilja bylgjupappa frá sléttum pappa og pappír. Efnið er pressað og baggað og síðan flutt til Svíþjóðar til frekari flokkunar og endurvinnslu.</p><p>Úr endurunnum <strong>pappír og pappa</strong> er t.d. framleiddur salernispappír, eldhúspappír, dagblaðapappír og karton sem notað er til að búa til nýjar umbúðir. Úr endurunnum bylgjupappa er framleiddur nýr bylgjupappi.</p>"}/>                     
                     <EducationPortrait image={plast} name={"PLAST"} text={"<p>Efnið er pressað og baggað í móttöku- og flokkunarstöð <strong>SORPU</strong> og síðan flutt til Svíþjóðar til frekari flokkunar og endurvinnslu​​ eða orkuvinnslu.</p> "} />
                     <EducationPortrait image={flöskur} name={"FLÖSKUR OG DÓSIR"} text={"<p>Endurvinnslan hf. tekur við <strong>skilagjaldsskyldum umbúðum</strong> sem berast til <strong>SORPU</strong> og baggar áldósir og plastumbúðir í pressum. Umbúðirnar eru svo fluttar erlendis til endurvinnslu.</p><p>Framleiðsla úr endurunnum <strong>áldósum</strong> eru t.d. nýjar áldósir og úr gömlu plastflöskunum er framleidd polyester ull – efni sem nýtist í fataiðnaði, teppaframleiðslu o.fl. Flísföt eru þekktasta afurðin.</p><p> <strong>Glerflöskur</strong> eru muldar og nýtast sem undirstöðuefni í landmótun á urðunarstað <strong>SORPU</strong> í Álfsnesi.</p>"} />
                 </div>
@@ -58,3 +58,5 @@ import Waypoint from 'react-waypoint';
     }
 
     export default DropDownNr01;
+
+  

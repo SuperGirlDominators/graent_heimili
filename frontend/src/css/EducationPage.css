@@ -21,6 +21,11 @@
 body {
   overflow: scroll; }
 
+.target {
+  display: block;
+  height: auto;
+  margin: 0 auto; }
+
 .luminance-target {
   -webkit-mask-image: url("../assets/images/banner-mask.png");
   mask-image: url("../assets/images/banner-mask.png");
