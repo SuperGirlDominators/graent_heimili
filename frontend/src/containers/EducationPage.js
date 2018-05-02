@@ -42,7 +42,7 @@ export default class Education extends Component {
       
     componentDidMount() {
         window.addEventListener("scroll", this._handleWaypointEnter);
-        document.body.id= "aboutgame";
+        document.body.id= "abouteducation";
     }
     _handleWaypointEnter() {
         console.log("scrolling")
@@ -51,7 +51,7 @@ export default class Education extends Component {
         $('.education2').animate({'opacity':'1'},500);
         $('.scroll-downs').animate({'opacity':'0'},500);
         $('.educationSubtext').animate({'opacity':'0'},500);
-        $('.luminance-target').animate({'opacity':'0'},500);
+        $('.luminance-target-education').animate({'opacity':'0'},500);
     }
 
     selectPage = ( pageNumber ) => {
@@ -82,11 +82,11 @@ export default class Education extends Component {
 
     render() {
         return (
-            <div id="aboutgame">
+            <div id="abouteducation">
             <div className="container">
               <div className="row">
                   <div className="luminance-mask">
-                      <img className="target luminance-target" src={homeBanner} alt="Masked Banner"/>
+                      <img className="target luminance-target-education" src={homeBanner} alt="Masked Banner"/>
                   </div>
               </div>
             </div>

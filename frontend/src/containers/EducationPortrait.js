@@ -25,7 +25,7 @@ export default class EducationPortrait extends Component {
         return (
             <div className="col-md-3" style={{ paddingRight: 0, paddingLeft: 15 }}>
                 <div className="gluggi" style={{ background: 'white'}}>
-                    <img className="AboutImage" src={image} alt={name}/>
+                    <img className="AboutImage" src={image} alt={name} />
                     <div className={dropDownClass}>
                         <div  className="kassi">
                             <div onClick={this.toggleDropDown} style={{ boxShadow: "0px 5px 10px 0px rgba(0,0,0,0.2)", height: 45, paddingTop: 6}}>{name}<i className={dropArrowClass}></i></div>

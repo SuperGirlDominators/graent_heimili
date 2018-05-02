@@ -21,12 +21,18 @@
 body {
   overflow: scroll; }
 
+#abouteducation {
+  background: linear-gradient(90deg, #249084, #3EB490, #4CCC98, #54D99C, #68FFA8);
+  margin: 0 auto;
+  padding: 0;
+  height: 100vh; }
+
 .target {
   display: block;
   height: auto;
   margin: 0 auto; }
 
-.luminance-target {
+.luminance-target-education {
   -webkit-mask-image: url("../assets/images/banner-mask.png");
   mask-image: url("../assets/images/banner-mask.png");
   mask-mode: luminance;
@@ -44,7 +50,7 @@ body {
   max-width: 100vw;
   height: 100vh; }
   @media screen and (max-width: 768px) {
-    .luminance-target {
+    .luminance-target-education {
       -webkit-mask-image: none;
       mask-image: none;
       opacity: 0.8; } }
@@ -192,3 +198,30 @@ body {
 
 .educPageStyle {
   margin-top: 100px; }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  width: 100%; }
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+  padding: 12px 16px;
+  z-index: 1;
+  font-family: 'Titillium Web', sans-serif;
+  text-align: left; }
+
+.dropdown.active .dropdown-content {
+  display: block; }
+
+.linkStyle a {
+  color: #249084;
+  font-weight: 600; }
+
+.linkStyle:hover {
+  text-decoration: underline; }

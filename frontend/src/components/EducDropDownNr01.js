@@ -38,9 +38,9 @@ import Waypoint from 'react-waypoint';
                     <EducationPortrait image={flöskur} name={"FLÖSKUR OG DÓSIR"} text={"<p>Endurvinnslan hf. tekur við <strong>skilagjaldsskyldum umbúðum</strong> sem berast til <strong>SORPU</strong> og baggar áldósir og plastumbúðir í pressum. Umbúðirnar eru svo fluttar erlendis til endurvinnslu.</p><p>Framleiðsla úr endurunnum <strong>áldósum</strong> eru t.d. nýjar áldósir og úr gömlu plastflöskunum er framleidd polyester ull – efni sem nýtist í fataiðnaði, teppaframleiðslu o.fl. Flísföt eru þekktasta afurðin.</p><p> <strong>Glerflöskur</strong> eru muldar og nýtast sem undirstöðuefni í landmótun á urðunarstað <strong>SORPU</strong> í Álfsnesi.</p>"} />
                 </div>
             </div>
-            <div className="container">
+            <div className="container linkStyle">
                 <div className="row">
-                    <EducationPortrait image={molta} name={"MOLTA"} text={"<p><strong>Hérna</strong> er síða með upplýsingum um hvernig á að byrja.</p>"} />                    
+                    <EducationPortrait image={molta} name={"MOLTA"} text={'<p><strong><a href="http://www.sorpa.is/files/ymis-skjol/heima_jardgerd.pdf" target="_blank">Hér</a></strong> er síða með upplýsingum um hvernig á að byrja.</p>'}/>
                     <EducationPortrait image={malmur} name={"MÁLMUR-ÁLDÓSIR"} text={"​​<p>Efnið er flutt til brotamálms-fyrirtækja sem flokka það eftir málmtegundum og minnka rúmmál, t.d. með pressun.</p><p><strong>Málmar</strong> eru fluttir erlendis til bræðslu og endurvinnslu.</p>"} />
                     <EducationPortrait image={kertavax} name={"KERTAVAX"} text={"​<p>Efnið nýtist <strong>til framleiðslu á útikertum</strong> hjá Plastiðjunni Bjargi – Iðjulundi á Akureyri.</p>"} />
                 </div>
