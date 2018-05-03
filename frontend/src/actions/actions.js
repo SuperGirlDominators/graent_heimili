@@ -73,6 +73,7 @@ export const getQuestions = () => {
     fetch(url, {
       headers: headers,
       method: "GET",
+      credentials: 'include', // Don't forget to specify this if you need cookies
     })
     .then(response =>
       response.json()
@@ -114,6 +115,7 @@ export const getChoices = () => {
     fetch(url, {
       headers: headers,
       method: "GET",
+      credentials: 'include', // Don't forget to specify this if you need cookies
     })
     .then(response =>
       response.json()
@@ -206,6 +208,7 @@ export const getChecklist = () => {
     fetch(url, {
       headers: headers,
       method: "GET",
+      credentials: 'include', // Don't forget to specify this if you need cookies
     })
     .then(response =>
       response.json()
@@ -260,6 +263,7 @@ export const getUserChecklist = () => {
     fetch(url, {
       headers: headers,
       method: "GET",
+      credentials: 'include', // Don't forget to specify this if you need cookies
     })
     .then(response =>
       response.json()
@@ -301,6 +305,7 @@ export const getChecklistSteps = () => {
     fetch(url, {
       headers: headers,
       method: "GET",
+      credentials: 'include', // Don't forget to specify this if you need cookies
     })
     .then(response =>
       response.json()

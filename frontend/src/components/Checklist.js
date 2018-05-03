@@ -39,7 +39,6 @@ class Checklist extends Component {
   componentWillMount(){
     document.body.id= "checklist";
   }
- 
 
   getNextStep() {
     const currStep = { currentStep: this.props.current_step + 1 };
@@ -62,7 +61,6 @@ class Checklist extends Component {
       $('#checklist').addClass('bg_4'); 
     }
 
-
     if(currStep.currentStep === this.props.checklist_steps.length + 1 ) {
       this.handleSubmit();
     } 
@@ -71,7 +69,6 @@ class Checklist extends Component {
       this.props.history.push('/stepcomplete');
     }
   }
-
 
   handleSubmit() {
     const checklistValue = this.props.userchecklist;

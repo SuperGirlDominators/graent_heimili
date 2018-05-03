@@ -49,7 +49,15 @@ function checkIfSignedIn(url) {
 }
 
 function storeUserInDatabase(userId, username, picture, cb) {
-  let sql = `INSERT INTO user_info (userID, username, userImage) VALUES ('${userId}', '${username}', '${picture}')`;
+  let sql = `INSERT INTO user_info (userID, username, userImage, userQuestionsAnswered) VALUES ('${userId}', '${username}', '${picture}', 0)`;
+  dbConnection.query(sql, (err, result) => {
+    if (cb) 
+      cb(err);
+  });
+}
+
+function updateUserQuestionsAnswered(userId, cb) {
+  let sql = `UPDATE user_info SET userQuestionsAnswered = '1' WHERE user_info.userID = '${userId}'`;
   dbConnection.query(sql, (err, result) => {
     if (cb) 
       cb(err);
@@ -289,6 +297,7 @@ app.post(APIPrefix + '/questionChoices', (req, res) => {
           dbConnection.query(sql, (err, result) => {
             if(err) 
               throw err;
+              updateUserQuestionsAnswered();
           });
         }
       });
@@ -315,10 +324,13 @@ app.get(APIPrefix + '/checklist', (req, res) => {
 // Get user checklist from database
 // what choices a user has made
 app.get(APIPrefix + '/userchecklist', (req, res) => {
-  let sql = 'SELECT * FROM user_checklist';
-  dbConnection.query(sql, (err, result) => {
-    if(err) throw err;
-    res.send(result);
+  const sessionCookie = req.cookies[cookieName];
+  admin.auth().verifySessionCookie(sessionCookie, true).then((decodedClaims) => {
+    let sql = `SELECT * FROM user_checklist WHERE userID = '${decodedClaims.sub}'`;
+    dbConnection.query(sql, (err, result) => {
+      if(err) throw err;
+      res.send(result);
+    });
   });
 });
 
