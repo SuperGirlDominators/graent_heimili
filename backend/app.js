@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser')
 // const jwt  = require('jsonwebtoken'); // used to create, sign, and verify tokens
 const firebaseAdmin = require('firebase-admin');
 const app = express();
-const port = 8080;
+const port = 3003;
 const APIPrefix = '/api';
 const seacretPassword = 'pass12345678910';
 const tokenCookieOptions = {
@@ -77,7 +77,7 @@ app.use(attachCsrfToken('/', 'csrfToken', (Math.random()* 100000000000000000).to
 
 const dbConnection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'heidrun_local',
+  user     : 'hrefna_local',
   password : '',
   port     :8889,
   database : 'green_home'
@@ -276,37 +276,6 @@ app.get('/logout', function (req, res) {
 
 // create a new user in the database and return a access token cookie
 /*
-<<<<<<< Updated upstream
-app.post(APIPrefix + '/adduser', (req, res) => {
-  try {
-    // finding the user
-    getFirebaseUser(req.body.user.uid, (error, userData) => {
-      // if no user found create it ?
-      if(error) {
-        createFirebaseUser(req.body.user,(error, userRecord) => {
-          if (error) {
-            return res.send(error);
-          } else {
-            createCustomToken(req.body.user.uid, (error, token) => {
-              if (error) {
-                return res.send(error);
-              } else {
-                res.cookie('green_home_token', token, tokenCookieOptions);
-                return res.send("token returned! yey!");
-              }
-            });
-          }
-        });
-      } else {
-        res.cookie('green_home_token', req.body.realToken, tokenCookieOptions);
-        // res.send("token returned! yey!");
-        storeUserInDatabase(req.body.user.uid, req.body.user.displayName, req.body.user.photoURL, res );
-      }
-    });
-  } catch(error) {
-      return res.send('sorry, something went wrong')
-  }
-=======*/
 /*app.post(APIPrefix + '/adduser', (req, res) => {
   // finding the user
   getFirebaseUser(req.body.user.uid, (error, userData) => {
@@ -344,7 +313,6 @@ app.post(APIPrefix + '/adduser', (req, res) => {
       storeUserInDatabase(req.body.user.uid, req.body.user.displayName, req.body.user.photoURL, res );
     }
   });
->>>>>>> Stashed changes
 });
 */
 function storeUserInDatabase(userId, username, picture, res) {

@@ -10,8 +10,14 @@
     box-sizing: inherit;
 }
 
-
-#aboutgame {
+body {
+  * {
+      &:before, &:after {
+          -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+      }
+  }
+&#aboutgame {
   background: linear-gradient(90deg, #249084, #3EB490, #4CCC98, #54D99C, #68FFA8);
   overflow: hidden;
   margin: 0 auto;
@@ -258,10 +264,3 @@ padding-right: 0px;
       padding-top: 11px;
     } 
   }
-
-/*
-  .next_button {
-    margin: auto;
-    width: 50%;
-  }
-  */

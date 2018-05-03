@@ -32,17 +32,17 @@ import { ENETRESET } from 'constants';
 
 
 
+
 export default class Education extends Component {
     constructor(props) {
         super(props);
         this.page = undefined;
       }
  
-   
-      
     componentDidMount() {
         window.addEventListener("scroll", this._handleWaypointEnter);
         document.body.id= "abouteducation";
+        
     }
     _handleWaypointEnter() {
         console.log("scrolling")

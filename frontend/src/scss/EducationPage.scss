@@ -145,7 +145,8 @@ body {
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 
         @media screen and (max-width: $breakpoint-desktop) {
-            width: 100%;
+            width: 90%;
+            margin-left:20px;
           }
       }
     
@@ -169,7 +170,8 @@ body {
         padding: 12px 0px;
 
         @media screen and (max-width: $breakpoint-desktop) {
-            width: 100%;
+            width: 90%;
+            margin-left:20px;
           }
     }
     
@@ -205,8 +207,6 @@ body {
         margin-top:100px;
     }
    
-    
-
     .dropdown {
         position: relative;
         display: inline-block;
@@ -230,12 +230,7 @@ body {
       display: block;
     }
 
-
-
-  
-
     .linkStyle a {
-      
         color: #249084;
         font-weight: 600;
       }
@@ -245,4 +240,14 @@ body {
       }
 
 
-    
+      /*miðjusetja kassana í mobile*/
+   .centerItems {
+       display: block;
+
+       @media screen and (max-width: $breakpoint-phone) {
+        margin-left: 40px;
+      }
+   }
+
+
+ 
