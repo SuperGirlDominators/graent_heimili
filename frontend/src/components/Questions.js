@@ -80,7 +80,7 @@ class Questions extends Component {
     data.unSelectedChoices = unSelectedChoices;
     // console.log(this.props.profileData.user.uid)
     data.userID = this.props.profileData.user ? this.props.profileData.user.uid : null;
-    const url = "http://localhost:8080/api/userchoices";
+    const url = "http://localhost:3303/api/userchoices";
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append('Accept','application/json');
@@ -96,6 +96,7 @@ class Questions extends Component {
       // this.props.history.push('/loader')
     })
     .then(response => {
+      console.log(response)
       if (this.props.profileData.user) {
         this.props.history.push('/loader')
     } else {
@@ -123,11 +124,9 @@ class Questions extends Component {
 
   render() {
     const { questions } = this.props;
-    console.log(questions)
     let { choices } = this.props;
     choices = choices.filter(choice => choice.questionID === this.state.currentQuestion+1);
     const isAChoiceSelected = choices.some(choice => choice.value);
-    console.log(this.state.currentQuestion);
 
    const bannerImages = [
       {

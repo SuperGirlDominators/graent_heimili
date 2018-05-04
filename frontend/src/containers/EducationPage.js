@@ -19,11 +19,11 @@ import ljosaperur from '../assets/images/ljosaperur.jpg';
 import rafhlodur from '../assets/images/rafhlodur.jpg';
 import gler from '../assets/images/gler.jpg';
 
-import DropDownNr01 from '../components/EducDropDownNr01.js';
-import DropDownNr02 from '../components/EducDropDownNr02.js';
-import DropDownNr03 from '../components/EducDropDownNr03.js';
-import DropDownNr04 from '../components/EducDropDownNr04.js';
-import DropDownNr05 from '../components/EducDropDownNr05.js';
+import DropDownNr01 from './partials/EducDropDownNr01.js';
+import DropDownNr02 from './partials/EducDropDownNr02.js';
+import DropDownNr03 from './partials/EducDropDownNr03.js';
+import DropDownNr04 from './partials/EducDropDownNr04.js';
+import DropDownNr05 from './partials/EducDropDownNr05.js';
 
 import $ from 'jquery';
 import Waypoint from 'react-waypoint';

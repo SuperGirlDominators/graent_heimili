@@ -250,14 +250,14 @@
     transform: rotateY(180deg);
     margin-left: -80px; }
   .checklist_content .view_up {
-    display: none;
     position: absolute;
-    top: 24px;
-    left: 62%;
+    top: 40%;
+    right: 5%;
     border-color: transparent;
     background-color: transparent;
     outline: none;
-    z-index: 20; }
+    z-index: 20;
+    opacity: 0.4; }
     .checklist_content .view_up i {
       border: solid #fff;
       border-width: 0 6px 6px 0;
@@ -266,6 +266,8 @@
     .checklist_content .view_up .up {
       transform: rotate(-135deg);
       -webkit-transform: rotate(-135deg); }
+  .checklist_content .not_active {
+    opacity: 0.4; }
   .checklist_content .checklistItems {
     display: flex;
     -ms-flex-direction: column;
@@ -274,17 +276,23 @@
     flex-wrap: wrap;
     -ms-flex-pack: start;
     justify-content: flex-start;
-    height: 60vh;
+    height: 75vh;
     max-width: 50%;
     margin-left: 30px;
-    margin-top: 50px;
+    margin-top: -30px;
     overflow: hidden;
     z-index: 1; }
-    .checklist_content .checklistItems div:nth-child(1) {
-      margin-top: 50px; }
-      @media screen and (max-width: 500px) {
-        .checklist_content .checklistItems div:nth-child(1) {
-          margin-top: 0px; } }
+    .checklist_content .checklistItems .rem_checklist {
+      margin-bottom: 10px; }
+    .checklist_content .checklistItems .wrapper {
+      width: 92%;
+      height: 70vh;
+      overflow: hidden; }
+    .checklist_content .checklistItems .content_wrapper {
+      width: 105%;
+      height: 100%;
+      overflow-y: scroll;
+      overflow-x: hidden; }
     .checklist_content .checklistItems .label_wrap {
       background: #fff;
       margin-bottom: 30px;
@@ -448,11 +456,12 @@
         z-index: 0; } }
   .checklist_content .view_more {
     position: absolute;
-    bottom: -44px;
-    left: 62%;
+    bottom: 40%;
+    right: 5%;
     border-color: transparent;
     background-color: transparent;
-    outline: none; }
+    outline: none;
+    z-index: 1; }
     .checklist_content .view_more i {
       border: solid #fff;
       border-width: 0 6px 6px 0;

@@ -4,6 +4,7 @@ import Home from './containers/Home';
 import Header from './containers/partials/Header';
 import Login from './components/partials/Login';
 import Questions from './components/Questions';
+import Loader from './components/Loader';
 import Checklist from './components/Checklist';
 import StepAchievement from './containers/StepAchievement';
 import AboutGame from './containers/AboutGame';
@@ -11,11 +12,11 @@ import AboutUs from './containers/AboutUs';
 import Companies from './containers/Companies';
 import Education from './containers/EducationPage';
 
-import DropDownNr01 from './components/EducDropDownNr01';
-import DropDownNr02 from './components/EducDropDownNr02';
-import DropDownNr03 from './components/EducDropDownNr03';
-import DropDownNr04 from './components/EducDropDownNr04';
-import DropDownNr05 from './components/EducDropDownNr05';
+import DropDownNr01 from './containers/partials/EducDropDownNr01';
+import DropDownNr02 from './containers/partials/EducDropDownNr02';
+import DropDownNr03 from './containers/partials/EducDropDownNr03';
+import DropDownNr04 from './containers/partials/EducDropDownNr04';
+import DropDownNr05 from './containers/partials/EducDropDownNr05';
 
 import Footer from './containers/partials/Footer';
 import './css/App.css';
@@ -52,6 +53,7 @@ class App extends Component {
         <Header toggleMenu={this.toggleMenu} menuOpen={this.state.menuOpen}/>
         <Route path="/" exact component={Home}/>
         <Route path="/questions" component={Questions} />
+        <Route path="/loader" component={Loader} />
         <Route path="/checklist" component={Checklist} />
         <Route path="/stepcomplete" component={StepAchievement} />
         <Route path="/about-game" component={AboutGame} />
