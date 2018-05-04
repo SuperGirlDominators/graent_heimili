@@ -63,16 +63,16 @@ class Questions extends Component {
       // console.log(firebase.auth().currentUser)
       this.setState({login:true}); 
     }
-    this.props.actions.postChoices(this.props.choices);
     const choicesValue = this.props.choices;
     const unSelectedChoices = choicesValue.filter((choice)=> {
-      if(choice.value) {
-        return false;
-      } else {
-        return true;
+      return !choice.value;
+    });
+    this.props.actions.postChoices(unSelectedChoices, err => {
+      if (!err) {
+        this.props.history.push('/loader')
       }
     });
-    this.postChecklist(unSelectedChoices);
+    // this.postChecklist(unSelectedChoices);
   }
 
   postChecklist(unSelectedChoices) {
@@ -80,7 +80,7 @@ class Questions extends Component {
     data.unSelectedChoices = unSelectedChoices;
     // console.log(this.props.profileData.user.uid)
     data.userID = this.props.profileData.user ? this.props.profileData.user.uid : null;
-    const url = "http://localhost:3303/api/userchoices";
+    const url = "http://localhost:3003/api/userchoices";
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append('Accept','application/json');
@@ -102,8 +102,6 @@ class Questions extends Component {
     } else {
         return false;
     }
-      // this.props.profileData.user ? this.props.history.push('/loader') : false;
-
       // this.props.profileData.user ? this.props.history.push('/checklist') : false;
     })
     .catch( err => {
@@ -119,8 +117,6 @@ class Questions extends Component {
     // console.log(e.target.value);
     clickedItems.push(clickedItem);
   }
-
-  
 
   render() {
     const { questions } = this.props;

@@ -50,7 +50,7 @@ class App extends Component {
             <div className={maskClass} style={imageStyle}></div>
         </div>
         <Route path="/login" component={Login} />
-        <Header toggleMenu={this.toggleMenu} menuOpen={this.state.menuOpen}/>
+        <Header toggleMenu={this.toggleMenu} menuOpen={this.state.menuOpen} history={this.props.history}/>
         <Route path="/" exact component={Home}/>
         <Route path="/questions" component={Questions} />
         <Route path="/loader" component={Loader} />

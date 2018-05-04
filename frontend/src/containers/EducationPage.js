@@ -32,17 +32,17 @@ import { ENETRESET } from 'constants';
 
 
 
+
 export default class Education extends Component {
     constructor(props) {
         super(props);
         this.page = undefined;
       }
  
-   
-      
     componentDidMount() {
         window.addEventListener("scroll", this._handleWaypointEnter);
         document.body.id= "abouteducation";
+        
     }
     _handleWaypointEnter() {
         console.log("scrolling")
@@ -51,6 +51,7 @@ export default class Education extends Component {
         $('.education2').animate({'opacity':'1'},500);
         $('.scroll-downs').animate({'opacity':'0'},500);
         $('.educationSubtext').animate({'opacity':'0'},500);
+        $('.educationSubtext-mobile').animate({'opacity':'0'},500);
         $('.luminance-target-education').animate({'opacity':'0'},500);
     }
 
@@ -95,6 +96,8 @@ export default class Education extends Component {
                         <div className="col-md-12">
                             <div className="education">Fræðsluefni<br /> og fróðleikur</div>
                             <div className="educationSubtext">Hér fyrir neðan finnur þú allskonar fræðsluefni um flokkun<br /> og hvað verður um hana, uppskriftir af hreinsiefnum og<br /> snyrtivörum, hvar þú getur nálgast umhverfisvænar vörur og<br /> margt fleira sem mun hjálpa</div>
+                            <div className="educationSubtext-mobile">Hér fyrir neðan finnur þú allskonar fræðsluefni um flokkun og hvað verður um hana, uppskriftir af hreinsiefnum og snyrtivörum, hvar þú getur nálgast umhverfisvænar vörur og margt fleira sem mun hjálpa</div>
+
                             <div className="education2">Veldu fræðsluefni</div>
                         </div>
                     </div>
