@@ -1,6 +1,7 @@
 
   /*# sourceMappingURL=styles.css.map */
-  
+  @import "_mediaqueries.scss";
+
   #aboutpage {
     min-height: 100vh;
     overflow: unset;
@@ -21,7 +22,8 @@ margin-top: 168px;
 margin-bottom: 20px;
 
   @media screen and (max-width: $breakpoint-phone) {
-    font-size: 0px;
+    font-size: 30px;
+    margin-left: 50px;
   }
 }
 
