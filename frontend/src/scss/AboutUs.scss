@@ -19,7 +19,13 @@ font-size: 40px;
 color: white;
 margin-top: 168px; 
 margin-bottom: 20px;
+
+  @media screen and (max-width: $breakpoint-phone) {
+    font-size: 0px;
+  }
 }
+
+
 .aboutImage {
     height: 278px;
     width: 100%; 

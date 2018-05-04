@@ -52,9 +52,16 @@ body {
   height: 100vh; }
   @media screen and (max-width: 768px) {
     .luminance-target-education {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 1100px;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
       -webkit-mask-image: none;
       mask-image: none;
-      opacity: 0.8; } }
+      opacity: 0.2; } }
 
 .education {
   font-family: 'Titillium Web', sans-serif;
@@ -79,7 +86,16 @@ body {
   padding-bottom: 50px; }
   @media screen and (max-width: 500px) {
     .educationSubtext {
-      font-size: 1.2em;
+      display: none; } }
+
+.educationSubtext-mobile {
+  display: none; }
+  @media screen and (max-width: 500px) {
+    .educationSubtext-mobile {
+      display: block;
+      font-family: 'Titillium Web', sans-serif;
+      color: white;
+      font-size: 18px;
       margin-left: 30px;
       margin-right: 20px; } }
 

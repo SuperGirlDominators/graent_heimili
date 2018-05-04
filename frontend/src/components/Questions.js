@@ -80,7 +80,7 @@ class Questions extends Component {
     data.unSelectedChoices = unSelectedChoices;
     // console.log(this.props.profileData.user.uid)
     data.userID = this.props.profileData.user ? this.props.profileData.user.uid : null;
-    const url = "http://localhost:8080/api/userchoices";
+    const url = "http://localhost:3003/api/userchoices";
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append('Accept','application/json');
