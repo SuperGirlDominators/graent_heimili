@@ -25,10 +25,6 @@ class Checklist extends Component {
   }
 
   componentDidUpdate(){
-    // compute number of input elements clicked
-    // let userchecklist = this.props;
-    // let totalChecklist = userchecklist.userchecklist;
-
     //toggle view of up and down button
     $('.view_more').click(function(){
       $('.view_up').css("opacity", "1");

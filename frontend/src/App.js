@@ -43,7 +43,7 @@ class App extends Component {
       maskClass = 'target home-luminance-target';
       imageStyle = { backgroundImage: `url(${homeBanner})` }; 
     }
-    const footerClass = this.state.menuOpen ? 'menu-active' : '';
+    const footerClass = this.state.menuOpen ? 'menu-active' : 'socials_content';
     return (
       <div>
         <div className="luminance-mask">
@@ -65,7 +65,7 @@ class App extends Component {
         <Route path="/dropDownNr03" component={DropDownNr03} />
         <Route path="/dropDownNr04" component={DropDownNr04} />
         <Route path="/dropDownNr05" component={DropDownNr05} />
-        <div className={footerClass} style={{position: 'fixed', bottom: 20, right: '134px'}}>
+        <div className={footerClass} style={{position: 'fixed', bottom: 20, width: '100%' }}>
         <Footer />
         </div>
       </div>
