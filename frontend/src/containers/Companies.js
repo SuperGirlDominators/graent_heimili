@@ -3,7 +3,7 @@ import CompaniesPortrait from './CompaniesPortrait';
 import sorpa from '../assets/images/sorpa_logo.jpg';
 import umhverfisstofnun from '../assets/images/umhverfisstofnun.jpg';
 import endurvinnslan from '../assets/images/endurvinnslan.jpg';
-import vefskolinn from '../assets/images/vefskolinn.jpg';
+import reykjavik from '../assets/images/reykjavik.jpg';
 import '../css/AboutUs.css';
 
 export default class Companies extends Component {
@@ -19,10 +19,10 @@ export default class Companies extends Component {
             </div>
             <div className="container">
                 <div className="row">
-                    <CompaniesPortrait image={sorpa} name={"Sorpa"} fullName={"Sorpa"} text={"Hlutverk SORPU er að annast meðhöndlun úrgangs fyrir öll sveitarfélögin sem aðild eiga að SORPU, svo sem að starfrækja urðunarstað og móttökustöð, byggja og reka endurvinnslustöðvar, þróa nýjar aðferðir til að vinna verðmæti úr úrgangsefnum, eyðingu hættulegra úrgangsefna, framleiða og selja eldsneyti og orku úr úrgangi, fylgjast með tækniþróun á sviði úrgangseyðingar og endurvinnslu, gerð svæðisáætlunar sbr. lagakröfu hverju sinni og kynna gildi umhverfissjónarmiða í meðhöndlun úrgangs. "}/>                    
-                    <CompaniesPortrait image={umhverfisstofnun} name={"Umhverfisstofnun"} fullName={"Umhverfisstofnun"} text={"Hlutverk Umhverfisstofnunar er að stuðla að velferð almennings með því að beita sér fyrir heilnæmu umhverfi, öruggum neysluvörum og verndun og sjálfbærri nýtingu náttúruauðlinda."}/>
-                    <CompaniesPortrait image={endurvinnslan} name={"Endurvinnslan"} fullName={"Endurvinnslan"} text={"Endurvinnslan hf. var stofnuð árið 1989, ástæða stofnunar félagsins var náttúru- og umhverfisvernd. Framlag Endurvinnslunnar til umhverfisverndar er verulegt því vegna skilagjaldsins eru einnota drykkjarumbúðir ekki lengur rusl sem liggur á víðavangi heldur endurvinnanleg verðmæti sem margir hafa fjárhagslegan hag af."}/>
-                    <CompaniesPortrait image={vefskolinn} name={"Vefskólinn"} fullName={"Vefskólinn"} text={"Tækniskólinn býður uppá tveggja ára nám í vefþróun með áherslu á viðmótsforritun. Námi í vefþróun er ætlað að svara aukinni þörf atvinnulífsins á vef- og viðmótsforriturum. Menntun á sviði vefþróunar krefst sífellt meiri sérhæfingar og með þessu námi gefst kostur á sérsniðinni námsleið í viðmóti, notendaupplifun og forritun veflausna."}/>
+                    <CompaniesPortrait image={sorpa} name={"Sorpa"} fullName={"Sorpa"} text={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum elit turpis, vitae maximus ex fringilla et. Aliquam erat volutpat. Donec ut elit sed elit efficitur cursus. Sed euismod, elit nec rutrum scelerisque, ligula sapien tincidunt nisi, et dictum tellus nisl et velit. Proin dictum eros lobortis odio vulputate, non condimentum urna ultrices."}/>                    
+                    <CompaniesPortrait image={umhverfisstofnun} name={"Umhverfisstofnun"} fullName={"Umhverfisstofnun"} text={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum elit turpis, vitae maximus ex fringilla et. Aliquam erat volutpat. Donec ut elit sed elit efficitur cursus. Sed euismod, elit nec rutrum scelerisque, ligula sapien tincidunt nisi, et dictum tellus nisl et velit. Proin dictum eros lobortis odio vulputate, non condimentum urna ultrices."}/>
+                    <CompaniesPortrait image={endurvinnslan} name={"Endurvinnslan"} fullName={"Endurvinnslan"} text={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum elit turpis, vitae maximus ex fringilla et. Aliquam erat volutpat. Donec ut elit sed elit efficitur cursus. Sed euismod, elit nec rutrum scelerisque, ligula sapien tincidunt nisi, et dictum tellus nisl et velit. Proin dictum eros lobortis odio vulputate, non condimentum urna ultrices."}/>
+                    <CompaniesPortrait image={reykjavik} name={"Reykjavík"} fullName={"Reykjavík"} text={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum elit turpis, vitae maximus ex fringilla et. Aliquam erat volutpat. Donec ut elit sed elit efficitur cursus. Sed euismod, elit nec rutrum scelerisque, ligula sapien tincidunt nisi, et dictum tellus nisl et velit. Proin dictum eros lobortis odio vulputate, non condimentum urna ultrices."}/>
                 </div>  	
             </div>
         </div>
