@@ -16,10 +16,6 @@
   color: white;
   margin-top: 168px;
   margin-bottom: 20px; }
-  @media screen and (max-width: 500px) {
-    .umOkkur {
-      font-size: 30px;
-      margin-left: 50px; } }
 
 .aboutImage {
   height: 278px;

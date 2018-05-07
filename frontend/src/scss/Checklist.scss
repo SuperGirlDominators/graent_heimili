@@ -4,7 +4,7 @@
 
 #checklist {
   overflow: hidden;
-  background: linear-gradient(90deg, #249084, #3EB490, #4CCC98, #54D99C, #68FFA8);
+  background: linear-gradient(to right top, #249084, #3EB490, #4CCC98, #54D99C, #68FFA8);
   height:100vh;
 
   .luminance-mask {
@@ -16,6 +16,7 @@
   .luminance-target {
     max-width: 100vw;
     width:100%;
+    height: 100vh;
     opacity: 0.3;
   }
   
@@ -45,7 +46,7 @@
 }
 
 .bg_1 {
-  background-image: linear-gradient(to right top, #2b4e5d, #337788, #3aa2af, #49d0d1, #68ffed) !important;
+  background: linear-gradient(to left top, #2b4e5d, #337788, #3aa2af, #49d0d1, #68ffed)!important;
 
   #checkbox {
     input[type="checkbox"]:checked + span {
@@ -100,7 +101,7 @@
 }
 
 .bg_2 {
-  background-image: linear-gradient(to right top, #c63466, #d36c5f, #d49b73, #d5c4a1, #e4e6da) !important;
+  background: linear-gradient(90deg, #c63466, #d36c5f, #d49b73, #d5c4a1, #e4e6da)!important;
 
   #checkbox {
     input[type="checkbox"]:checked + span {
@@ -155,7 +156,7 @@
 }
 
 .bg_3 {
-  background-image: linear-gradient(to right top, #bc531c, #d67a19, #eba31a, #f8ce27, #fefb42) !important;
+  background: linear-gradient(90deg, #bc531c, #d67a19, #eba31a, #f8ce27, #fefb42 ) !important;
 
   #checkbox {
     input[type="checkbox"]:checked + span {
@@ -210,7 +211,7 @@
 }
 
 .bg_4 {
-  background-image: linear-gradient(to right top, #42357f, #664594, #8a56a8, #af68bc, #d47ace) !important;
+  background: linear-gradient(90deg, #42357f, #664594, #8a56a8, #af68bc, #d47ace) !important;
 
   #checkbox {
     input[type="checkbox"]:checked + span {
@@ -381,12 +382,11 @@
  
   .view_up {
     position: absolute;
-    top: 40%;
+    top: 30%;
     right: 5%;
     border-color: transparent;
     background-color: transparent;
     outline: none;
-    z-index: 20;
     opacity:0.4;
 
     i {
@@ -399,6 +399,10 @@
     .up {
       transform: rotate(-135deg);
       -webkit-transform: rotate(-135deg);
+    }
+
+    @media screen and (max-width: $breakpoint-mediumDown) {
+      display:none;
     }
   }
 
@@ -417,7 +421,7 @@
     height: 75vh;
     max-width: 50%;
     margin-left: 30px;
-    margin-top: -30px;
+    margin-top: -50px;
     overflow: hidden;
     z-index: 1;
 
@@ -429,6 +433,11 @@
       width: 92%;
       height: 70vh;
       overflow: hidden;
+
+      @media screen and (max-width: $breakpoint-mediumDown) {
+        width: 100%;
+        height: 100%;
+      }
     }
 
     .content_wrapper {
@@ -657,7 +666,7 @@
 
   .view_more {
     position: absolute;
-    bottom: 40%;
+    bottom: 30%;
     right: 5%;
     border-color: transparent;
     background-color: transparent;
@@ -680,6 +689,10 @@
       display: none;
     }
 
+  }
+
+  @media screen and (max-width: $breakpoint-mediumDown) {
+    margin-bottom: 50px;
   }
 }
 
