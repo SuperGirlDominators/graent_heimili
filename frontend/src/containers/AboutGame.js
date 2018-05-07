@@ -86,7 +86,7 @@ class AboutGame extends Component {
           <div className="row start-button">
               <div className="col-7 col-md-6">
                   <div>
-                       <a className="next_button btn-lg" href="#login_popup">Byrjaðu núna</a>
+                       <a className="next_button btn-lg" href="#login_popup">Svara spurningum</a>
                   </div>
                   <Login destination="/questions" />
               </div>

@@ -219,7 +219,7 @@ class Questions extends Component {
           { isAChoiceSelected &&
             <a className="play-button-outer" href={(this.state.currentQuestion === this.props.questions.length-1 ) && (!this.state.login) ? "#login_popup": "# " } style={{ display: "block" }} id="next_question" onClick={this.getNextQuestion}>
               <div className="play-button">
-                <p className="button_text">LJÚKA</p>
+                <p className="button_text">ÁFRAM</p>
               </div>
             </a>
           }
