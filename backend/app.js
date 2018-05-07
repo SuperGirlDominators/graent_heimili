@@ -5,11 +5,7 @@ const cookieParser = require('cookie-parser')
 // const jwt  = require('jsonwebtoken'); // used to create, sign, and verify tokens
 const firebaseAdmin = require('firebase-admin');
 const app = express();
-<<<<<<< HEAD
 const port = 3303;
-=======
-const port = 3003;
->>>>>>> 6b02466edcb2c5d1e91de9c7d61b4f833f1d20ff
 const APIPrefix = '/api';
 const seacretPassword = 'pass12345678910';
 const tokenCookieOptions = {
