@@ -8,8 +8,6 @@
   #loader .socials {
     display: none; }
 
-
-
 @-webkit-keyframes enter {
   0% {
     opacity: 0;
@@ -67,7 +65,6 @@ body {
     margin-left: -27.5px;
     margin-top: -27.5px; }
   .loading_content #loading_checklist {
-    font-family:TitilliumWeb-Regular;
     margin: 0;
     position: absolute;
     top: 60%;
